@@ -1,0 +1,4532 @@
+{
+	"info": {
+		"_postman_id": "34b54be4-541e-43ee-8de5-fe7ffad8d95f",
+		"name": "Natafa.Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33541732"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "authen",
+					"item": [
+						{
+							"name": "register",
+							"item": [
+								{
+									"name": "/api/authen/register",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"birthday\": \"2025-01-01\",\n  \"email\": \"mSXYP@KkAeGVwDkXHjteCiMck.kvvr\",\n  \"fullName\": \"et Excepteur\",\n  \"password\": \"non Lorem consequat\",\n  \"phoneNumber\": \"ut minim\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/authen/register",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"authen",
+												"register"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"birthday\": \"2025-01-01\",\n  \"email\": \"mSXYP@KkAeGVwDkXHjteCiMck.kvvr\",\n  \"fullName\": \"et Excepteur\",\n  \"password\": \"non Lorem consequat\",\n  \"phoneNumber\": \"ut minim\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/authen/register",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"authen",
+														"register"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "login",
+							"item": [
+								{
+									"name": "/api/authen/login",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"C9jCDBTCgjNxMpC@LhFWbJbhvrxVClOYMMAyHCy.auto\",\n  \"password\": \"occa\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/authen/login",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"authen",
+												"login"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"email\": \"C9jCDBTCgjNxMpC@LhFWbJbhvrxVClOYMMAyHCy.auto\",\n  \"password\": \"occa\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/authen/login",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"authen",
+														"login"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "refresh-token",
+							"item": [
+								{
+									"name": "/api/authen/refresh-token",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/authen/refresh-token",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"authen",
+												"refresh-token"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/authen/refresh-token",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"authen",
+														"refresh-token"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "verify-email",
+							"item": [
+								{
+									"name": "/api/authen/verify-email",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/authen/verify-email?token=proident in",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"authen",
+												"verify-email"
+											],
+											"query": [
+												{
+													"key": "token",
+													"value": "proident in"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/authen/verify-email?token=proident in",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"authen",
+														"verify-email"
+													],
+													"query": [
+														{
+															"key": "token",
+															"value": "proident in"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "categories",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "/api/categories/:id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/categories/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"categories",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "56370239",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/categories/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"categories",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "/api/categories/:id",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"categoryName\": \"minim nostrud culpa dolor\",\n  \"subcategories\": [\n    {\n      \"subcategoryId\": 6129244,\n      \"subcategoryName\": \"ad enim\"\n    },\n    {\n      \"subcategoryId\": 76437259,\n      \"subcategoryName\": \"anim Duis labore nostrud\"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/categories/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"categories",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "56370239",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"categoryName\": \"minim nostrud culpa dolor\",\n  \"subcategories\": [\n    {\n      \"subcategoryId\": 6129244,\n      \"subcategoryName\": \"ad enim\"\n    },\n    {\n      \"subcategoryId\": 76437259,\n      \"subcategoryName\": \"anim Duis labore nostrud\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/categories/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"categories",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "/api/categories/:id",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/categories/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"categories",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "56370239",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/categories/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"categories",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/api/categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/categories",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"categories"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/categories",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"categories"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/api/categories",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"categoryName\": \"et velit\",\n  \"subcategories\": [\n    {\n      \"subcategoryName\": \"commodo ul\"\n    },\n    {\n      \"subcategoryName\": \"ut labore occaecat\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/categories",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"categories"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"categoryName\": \"et velit\",\n  \"subcategories\": [\n    {\n      \"subcategoryName\": \"commodo ul\"\n    },\n    {\n      \"subcategoryName\": \"ut labore occaecat\"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/categories",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"categories"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "dashboard",
+					"item": [
+						{
+							"name": "monthly-revenue",
+							"item": [
+								{
+									"name": "/api/dashboard/monthly-revenue",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/dashboard/monthly-revenue",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"dashboard",
+												"monthly-revenue"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/dashboard/monthly-revenue",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"dashboard",
+														"monthly-revenue"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "quarterly-revenue",
+							"item": [
+								{
+									"name": "/api/dashboard/quarterly-revenue",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/dashboard/quarterly-revenue",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"dashboard",
+												"quarterly-revenue"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/dashboard/quarterly-revenue",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"dashboard",
+														"quarterly-revenue"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "yearly-revenue",
+							"item": [
+								{
+									"name": "/api/dashboard/yearly-revenue",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/dashboard/yearly-revenue",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"dashboard",
+												"yearly-revenue"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/dashboard/yearly-revenue",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"dashboard",
+														"yearly-revenue"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "monthly-total-feedbacks",
+							"item": [
+								{
+									"name": "/api/dashboard/monthly-total-feedbacks",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/dashboard/monthly-total-feedbacks",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"dashboard",
+												"monthly-total-feedbacks"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/dashboard/monthly-total-feedbacks",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"dashboard",
+														"monthly-total-feedbacks"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "quarterly-total-feedbacks",
+							"item": [
+								{
+									"name": "/api/dashboard/quarterly-total-feedbacks",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/dashboard/quarterly-total-feedbacks",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"dashboard",
+												"quarterly-total-feedbacks"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/dashboard/quarterly-total-feedbacks",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"dashboard",
+														"quarterly-total-feedbacks"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "yearly-total-feedbacks",
+							"item": [
+								{
+									"name": "/api/dashboard/yearly-total-feedbacks",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/dashboard/yearly-total-feedbacks",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"dashboard",
+												"yearly-total-feedbacks"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/dashboard/yearly-total-feedbacks",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"dashboard",
+														"yearly-total-feedbacks"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/api/dashboard",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/dashboard",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"dashboard"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/dashboard",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"dashboard"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "excels",
+					"item": [
+						{
+							"name": "monthly-revenue-excel",
+							"item": [
+								{
+									"name": "/api/excels/monthly-revenue-excel",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/excels/monthly-revenue-excel",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"excels",
+												"monthly-revenue-excel"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/excels/monthly-revenue-excel",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"excels",
+														"monthly-revenue-excel"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "quarterly-revenue-excel",
+							"item": [
+								{
+									"name": "/api/excels/quarterly-revenue-excel",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/excels/quarterly-revenue-excel",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"excels",
+												"quarterly-revenue-excel"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/excels/quarterly-revenue-excel",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"excels",
+														"quarterly-revenue-excel"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "yearly-revenue-excel",
+							"item": [
+								{
+									"name": "/api/excels/yearly-revenue-excel",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/excels/yearly-revenue-excel",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"excels",
+												"yearly-revenue-excel"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/excels/yearly-revenue-excel",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"excels",
+														"yearly-revenue-excel"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "feedbacks",
+					"item": [
+						{
+							"name": "{productId}",
+							"item": [
+								{
+									"name": "/api/feedbacks/:productId",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/feedbacks/:productId?page=56370239&size=56370239&sortBy=proident in&search=proident in&filter=proident in&rating=56370239",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"feedbacks",
+												":productId"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "56370239"
+												},
+												{
+													"key": "size",
+													"value": "56370239"
+												},
+												{
+													"key": "sortBy",
+													"value": "proident in"
+												},
+												{
+													"key": "search",
+													"value": "proident in"
+												},
+												{
+													"key": "filter",
+													"value": "proident in"
+												},
+												{
+													"key": "rating",
+													"value": "56370239"
+												}
+											],
+											"variable": [
+												{
+													"key": "productId",
+													"value": "56370239",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/feedbacks/:productId?page=56370239&size=56370239&sortBy=proident in&search=proident in&filter=proident in&rating=56370239",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"feedbacks",
+														":productId"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "56370239"
+														},
+														{
+															"key": "size",
+															"value": "56370239"
+														},
+														{
+															"key": "sortBy",
+															"value": "proident in"
+														},
+														{
+															"key": "search",
+															"value": "proident in"
+														},
+														{
+															"key": "filter",
+															"value": "proident in"
+														},
+														{
+															"key": "rating",
+															"value": "56370239"
+														}
+													],
+													"variable": [
+														{
+															"key": "productId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "/api/feedbacks/:id",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"status\": false\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/feedbacks/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"feedbacks",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "56370239",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"status\": false\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/feedbacks/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"feedbacks",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "/api/feedbacks/:id",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/feedbacks/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"feedbacks",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "56370239",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/feedbacks/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"feedbacks",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/api/feedbacks",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Images",
+											"value": "eu officia,non dolor eu",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/feedbacks?ProductId=56370239&Rating=56370239&Comment=proident in",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"feedbacks"
+									],
+									"query": [
+										{
+											"key": "ProductId",
+											"value": "56370239",
+											"description": "(Required) "
+										},
+										{
+											"key": "Rating",
+											"value": "56370239",
+											"description": "(Required) "
+										},
+										{
+											"key": "Comment",
+											"value": "proident in",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "multipart/form-data"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "Images",
+													"value": "eu officia,non dolor eu",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/feedbacks?ProductId=56370239&Rating=56370239&Comment=proident in",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"feedbacks"
+											],
+											"query": [
+												{
+													"key": "ProductId",
+													"value": "56370239",
+													"description": "(Required) "
+												},
+												{
+													"key": "Rating",
+													"value": "56370239",
+													"description": "(Required) "
+												},
+												{
+													"key": "Comment",
+													"value": "proident in",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/api/feedbacks",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/feedbacks?page=56370239&size=56370239&sortBy=proident in&search=proident in&filter=proident in&rating=56370239",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"feedbacks"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "56370239"
+										},
+										{
+											"key": "size",
+											"value": "56370239"
+										},
+										{
+											"key": "sortBy",
+											"value": "proident in"
+										},
+										{
+											"key": "search",
+											"value": "proident in"
+										},
+										{
+											"key": "filter",
+											"value": "proident in"
+										},
+										{
+											"key": "rating",
+											"value": "56370239"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/feedbacks?page=56370239&size=56370239&sortBy=proident in&search=proident in&filter=proident in&rating=56370239",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"feedbacks"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "56370239"
+												},
+												{
+													"key": "size",
+													"value": "56370239"
+												},
+												{
+													"key": "sortBy",
+													"value": "proident in"
+												},
+												{
+													"key": "search",
+													"value": "proident in"
+												},
+												{
+													"key": "filter",
+													"value": "proident in"
+												},
+												{
+													"key": "rating",
+													"value": "56370239"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "orders",
+					"item": [
+						{
+							"name": "confirm",
+							"item": [
+								{
+									"name": "/api/orders/confirm",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/orders/confirm?orderId=56370239",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"orders",
+												"confirm"
+											],
+											"query": [
+												{
+													"key": "orderId",
+													"value": "56370239"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/orders/confirm?orderId=56370239",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"orders",
+														"confirm"
+													],
+													"query": [
+														{
+															"key": "orderId",
+															"value": "56370239"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "complete",
+							"item": [
+								{
+									"name": "/api/orders/complete",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/orders/complete?orderId=56370239",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"orders",
+												"complete"
+											],
+											"query": [
+												{
+													"key": "orderId",
+													"value": "56370239"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/orders/complete?orderId=56370239",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"orders",
+														"complete"
+													],
+													"query": [
+														{
+															"key": "orderId",
+															"value": "56370239"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "cancel",
+							"item": [
+								{
+									"name": "/api/orders/cancel",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/orders/cancel?orderId=56370239",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"orders",
+												"cancel"
+											],
+											"query": [
+												{
+													"key": "orderId",
+													"value": "56370239"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/orders/cancel?orderId=56370239",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"orders",
+														"cancel"
+													],
+													"query": [
+														{
+															"key": "orderId",
+															"value": "56370239"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "me",
+							"item": [
+								{
+									"name": "/api/orders/me",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/orders/me?page=56370239&size=56370239&sortBy=proident in&search=proident in&filter=proident in&minAmount=-25642025.47844632&maxAmount=-25642025.47844632",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"orders",
+												"me"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "56370239"
+												},
+												{
+													"key": "size",
+													"value": "56370239"
+												},
+												{
+													"key": "sortBy",
+													"value": "proident in"
+												},
+												{
+													"key": "search",
+													"value": "proident in"
+												},
+												{
+													"key": "filter",
+													"value": "proident in"
+												},
+												{
+													"key": "minAmount",
+													"value": "-25642025.47844632"
+												},
+												{
+													"key": "maxAmount",
+													"value": "-25642025.47844632"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/orders/me?page=56370239&size=56370239&sortBy=proident in&search=proident in&filter=proident in&minAmount=-25642025.47844632&maxAmount=-25642025.47844632",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"orders",
+														"me"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "56370239"
+														},
+														{
+															"key": "size",
+															"value": "56370239"
+														},
+														{
+															"key": "sortBy",
+															"value": "proident in"
+														},
+														{
+															"key": "search",
+															"value": "proident in"
+														},
+														{
+															"key": "filter",
+															"value": "proident in"
+														},
+														{
+															"key": "minAmount",
+															"value": "-25642025.47844632"
+														},
+														{
+															"key": "maxAmount",
+															"value": "-25642025.47844632"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "shipping-cost",
+							"item": [
+								{
+									"name": "/api/orders/shipping-cost",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/orders/shipping-cost?inRegion=true&request=[object Object]&request=[object Object]",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"orders",
+												"shipping-cost"
+											],
+											"query": [
+												{
+													"key": "inRegion",
+													"value": "true"
+												},
+												{
+													"key": "request",
+													"value": "[object Object]"
+												},
+												{
+													"key": "request",
+													"value": "[object Object]"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/orders/shipping-cost?inRegion=true&request=[object Object]",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"orders",
+														"shipping-cost"
+													],
+													"query": [
+														{
+															"key": "inRegion",
+															"value": "true"
+														},
+														{
+															"key": "request",
+															"value": "[object Object]"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/api/orders",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"address\": \"in adipisicing pariatur\",\n  \"fullName\": \"proident pariatur deserunt culpa\",\n  \"inRegion\": true,\n  \"paymentMethodId\": -29282104,\n  \"phoneNumber\": \"Lorem esse ipsum in\",\n  \"orderDetailRequests\": [\n    {\n      \"productDetailId\": -12520081,\n      \"quantity\": 70174531\n    },\n    {\n      \"productDetailId\": 31750958,\n      \"quantity\": 7090550\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/orders?voucherId=56370239",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "voucherId",
+											"value": "56370239"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"address\": \"in adipisicing pariatur\",\n  \"fullName\": \"proident pariatur deserunt culpa\",\n  \"inRegion\": true,\n  \"paymentMethodId\": -29282104,\n  \"phoneNumber\": \"Lorem esse ipsum in\",\n  \"orderDetailRequests\": [\n    {\n      \"productDetailId\": -12520081,\n      \"quantity\": 70174531\n    },\n    {\n      \"productDetailId\": 31750958,\n      \"quantity\": 7090550\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/orders?voucherId=56370239",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"orders"
+											],
+											"query": [
+												{
+													"key": "voucherId",
+													"value": "56370239"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/api/orders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/orders?page=56370239&size=56370239&sortBy=proident in&search=proident in&filter=proident in&minAmount=-25642025.47844632&maxAmount=-25642025.47844632",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "56370239"
+										},
+										{
+											"key": "size",
+											"value": "56370239"
+										},
+										{
+											"key": "sortBy",
+											"value": "proident in"
+										},
+										{
+											"key": "search",
+											"value": "proident in"
+										},
+										{
+											"key": "filter",
+											"value": "proident in"
+										},
+										{
+											"key": "minAmount",
+											"value": "-25642025.47844632"
+										},
+										{
+											"key": "maxAmount",
+											"value": "-25642025.47844632"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/orders?page=56370239&size=56370239&sortBy=proident in&search=proident in&filter=proident in&minAmount=-25642025.47844632&maxAmount=-25642025.47844632",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"orders"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "56370239"
+												},
+												{
+													"key": "size",
+													"value": "56370239"
+												},
+												{
+													"key": "sortBy",
+													"value": "proident in"
+												},
+												{
+													"key": "search",
+													"value": "proident in"
+												},
+												{
+													"key": "filter",
+													"value": "proident in"
+												},
+												{
+													"key": "minAmount",
+													"value": "-25642025.47844632"
+												},
+												{
+													"key": "maxAmount",
+													"value": "-25642025.47844632"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "payments",
+					"item": [
+						{
+							"name": "payment",
+							"item": [
+								{
+									"name": "/api/payments/payment",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/payments/payment?orderId=56370239&type=proident in",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"payments",
+												"payment"
+											],
+											"query": [
+												{
+													"key": "orderId",
+													"value": "56370239"
+												},
+												{
+													"key": "type",
+													"value": "proident in"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/payments/payment?orderId=56370239&type=proident in",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"payments",
+														"payment"
+													],
+													"query": [
+														{
+															"key": "orderId",
+															"value": "56370239"
+														},
+														{
+															"key": "type",
+															"value": "proident in"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "wallet-payment",
+							"item": [
+								{
+									"name": "/api/payments/wallet-payment",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/payments/wallet-payment?amount=-25642025.47844632",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"payments",
+												"wallet-payment"
+											],
+											"query": [
+												{
+													"key": "amount",
+													"value": "-25642025.47844632"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/payments/wallet-payment?amount=-25642025.47844632",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"payments",
+														"wallet-payment"
+													],
+													"query": [
+														{
+															"key": "amount",
+															"value": "-25642025.47844632"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "payment-call-back",
+							"item": [
+								{
+									"name": "/api/payments/payment-call-back",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/payments/payment-call-back",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"payments",
+												"payment-call-back"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/payments/payment-call-back",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"payments",
+														"payment-call-back"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "products",
+					"item": [
+						{
+							"name": "/api/products",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/products?page=56370239&size=56370239&sortBy=proident in&search=proident in&filter=proident in&subcategoryId=56370239&minPrice=-25642025.47844632&maxPrice=-25642025.47844632",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"products"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "56370239"
+										},
+										{
+											"key": "size",
+											"value": "56370239"
+										},
+										{
+											"key": "sortBy",
+											"value": "proident in"
+										},
+										{
+											"key": "search",
+											"value": "proident in"
+										},
+										{
+											"key": "filter",
+											"value": "proident in"
+										},
+										{
+											"key": "subcategoryId",
+											"value": "56370239"
+										},
+										{
+											"key": "minPrice",
+											"value": "-25642025.47844632"
+										},
+										{
+											"key": "maxPrice",
+											"value": "-25642025.47844632"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/products?page=56370239&size=56370239&sortBy=proident in&search=proident in&filter=proident in&subcategoryId=56370239&minPrice=-25642025.47844632&maxPrice=-25642025.47844632",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"products"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "56370239"
+												},
+												{
+													"key": "size",
+													"value": "56370239"
+												},
+												{
+													"key": "sortBy",
+													"value": "proident in"
+												},
+												{
+													"key": "search",
+													"value": "proident in"
+												},
+												{
+													"key": "filter",
+													"value": "proident in"
+												},
+												{
+													"key": "subcategoryId",
+													"value": "56370239"
+												},
+												{
+													"key": "minPrice",
+													"value": "-25642025.47844632"
+												},
+												{
+													"key": "maxPrice",
+													"value": "-25642025.47844632"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "product",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "detail",
+									"item": [
+										{
+											"name": "/api/product/:id/detail",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/product/:id/detail",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"product",
+														":id",
+														"detail"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "56370239",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/product/:id/detail",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"product",
+																":id",
+																"detail"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "/api/product/:id",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"productName\": \"occaecat sint\",\n  \"subcategoryId\": 78231557,\n  \"summary\": \"laborum sunt fugiat in ut\",\n  \"material\": \"exercitation deserunt id dolor\",\n  \"isUpdateImagePackage\": true,\n  \"productDetails\": [\n    {\n      \"discount\": 89337886.9483425,\n      \"price\": -72336914.57956865,\n      \"productDetailId\": -56708692,\n      \"quantity\": -11183507,\n      \"size\": \"veniam ut\",\n      \"weight\": 91636396.37449682,\n      \"height\": 18833510.71290736,\n      \"width\": 84570391.80333781\n    },\n    {\n      \"discount\": -86568897.2422587,\n      \"price\": 55873482.31809884,\n      \"productDetailId\": -98283435,\n      \"quantity\": 59519553,\n      \"size\": \"est mollit laboris\",\n      \"weight\": -54817722.292590834,\n      \"height\": -58335478.439801715,\n      \"width\": -7681676.990507439\n    }\n  ],\n  \"productImages\": [\n    \"nisi fugiat\",\n    \"anim ut tempor\"\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/product/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"product",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "56370239",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"productName\": \"occaecat sint\",\n  \"subcategoryId\": 78231557,\n  \"summary\": \"laborum sunt fugiat in ut\",\n  \"material\": \"exercitation deserunt id dolor\",\n  \"isUpdateImagePackage\": true,\n  \"productDetails\": [\n    {\n      \"discount\": 89337886.9483425,\n      \"price\": -72336914.57956865,\n      \"productDetailId\": -56708692,\n      \"quantity\": -11183507,\n      \"size\": \"veniam ut\",\n      \"weight\": 91636396.37449682,\n      \"height\": 18833510.71290736,\n      \"width\": 84570391.80333781\n    },\n    {\n      \"discount\": -86568897.2422587,\n      \"price\": 55873482.31809884,\n      \"productDetailId\": -98283435,\n      \"quantity\": 59519553,\n      \"size\": \"est mollit laboris\",\n      \"weight\": -54817722.292590834,\n      \"height\": -58335478.439801715,\n      \"width\": -7681676.990507439\n    }\n  ],\n  \"productImages\": [\n    \"nisi fugiat\",\n    \"anim ut tempor\"\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/product/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"product",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "/api/product/:id",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/product/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"product",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "56370239",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/product/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"product",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/api/product",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"productName\": \"ipsum aliq\",\n  \"subcategoryId\": -63612629,\n  \"summary\": \"cillum ei\",\n  \"material\": \"ex deserunt consectetur sint\",\n  \"productDetails\": [\n    {\n      \"discount\": 774564.534073323,\n      \"price\": -79166839.07407016,\n      \"quantity\": 52455066,\n      \"size\": \"occaecat nostrud consequat voluptate magna\",\n      \"weight\": -4683529.887879655,\n      \"height\": -59407271.57300145,\n      \"width\": -97570142.63808186\n    },\n    {\n      \"discount\": 20583226.04036586,\n      \"price\": 53415651.689318895,\n      \"quantity\": 72915505,\n      \"size\": \"Excepteur proid\",\n      \"weight\": -57152224.9438976,\n      \"height\": 80575649.40292719,\n      \"width\": 58091490.634562105\n    }\n  ],\n  \"productImages\": [\n    \"esse minim incididunt deserunt\",\n    \"deserunt in nisi ipsum qui\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/product",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"product"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"productName\": \"ipsum aliq\",\n  \"subcategoryId\": -63612629,\n  \"summary\": \"cillum ei\",\n  \"material\": \"ex deserunt consectetur sint\",\n  \"productDetails\": [\n    {\n      \"discount\": 774564.534073323,\n      \"price\": -79166839.07407016,\n      \"quantity\": 52455066,\n      \"size\": \"occaecat nostrud consequat voluptate magna\",\n      \"weight\": -4683529.887879655,\n      \"height\": -59407271.57300145,\n      \"width\": -97570142.63808186\n    },\n    {\n      \"discount\": 20583226.04036586,\n      \"price\": 53415651.689318895,\n      \"quantity\": 72915505,\n      \"size\": \"Excepteur proid\",\n      \"weight\": -57152224.9438976,\n      \"height\": 80575649.40292719,\n      \"width\": 58091490.634562105\n    }\n  ],\n  \"productImages\": [\n    \"esse minim incididunt deserunt\",\n    \"deserunt in nisi ipsum qui\"\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/product",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"product"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "transactions",
+					"item": [
+						{
+							"name": "me",
+							"item": [
+								{
+									"name": "/api/transactions/me",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/transactions/me?page=56370239&size=56370239&sortBy=proident in&search=proident in&filter=proident in&minAmount=-25642025.47844632&maxAmount=-25642025.47844632",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"transactions",
+												"me"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "56370239"
+												},
+												{
+													"key": "size",
+													"value": "56370239"
+												},
+												{
+													"key": "sortBy",
+													"value": "proident in"
+												},
+												{
+													"key": "search",
+													"value": "proident in"
+												},
+												{
+													"key": "filter",
+													"value": "proident in"
+												},
+												{
+													"key": "minAmount",
+													"value": "-25642025.47844632"
+												},
+												{
+													"key": "maxAmount",
+													"value": "-25642025.47844632"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/transactions/me?page=56370239&size=56370239&sortBy=proident in&search=proident in&filter=proident in&minAmount=-25642025.47844632&maxAmount=-25642025.47844632",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"transactions",
+														"me"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "56370239"
+														},
+														{
+															"key": "size",
+															"value": "56370239"
+														},
+														{
+															"key": "sortBy",
+															"value": "proident in"
+														},
+														{
+															"key": "search",
+															"value": "proident in"
+														},
+														{
+															"key": "filter",
+															"value": "proident in"
+														},
+														{
+															"key": "minAmount",
+															"value": "-25642025.47844632"
+														},
+														{
+															"key": "maxAmount",
+															"value": "-25642025.47844632"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "/api/transactions/:id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/transactions/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"transactions",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "56370239",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/transactions/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"transactions",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/api/transactions",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/transactions?page=56370239&size=56370239&sortBy=proident in&search=proident in&filter=proident in&minAmount=-25642025.47844632&maxAmount=-25642025.47844632",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "56370239"
+										},
+										{
+											"key": "size",
+											"value": "56370239"
+										},
+										{
+											"key": "sortBy",
+											"value": "proident in"
+										},
+										{
+											"key": "search",
+											"value": "proident in"
+										},
+										{
+											"key": "filter",
+											"value": "proident in"
+										},
+										{
+											"key": "minAmount",
+											"value": "-25642025.47844632"
+										},
+										{
+											"key": "maxAmount",
+											"value": "-25642025.47844632"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/transactions?page=56370239&size=56370239&sortBy=proident in&search=proident in&filter=proident in&minAmount=-25642025.47844632&maxAmount=-25642025.47844632",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"transactions"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "56370239"
+												},
+												{
+													"key": "size",
+													"value": "56370239"
+												},
+												{
+													"key": "sortBy",
+													"value": "proident in"
+												},
+												{
+													"key": "search",
+													"value": "proident in"
+												},
+												{
+													"key": "filter",
+													"value": "proident in"
+												},
+												{
+													"key": "minAmount",
+													"value": "-25642025.47844632"
+												},
+												{
+													"key": "maxAmount",
+													"value": "-25642025.47844632"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "users",
+					"item": [
+						{
+							"name": "profile",
+							"item": [
+								{
+									"name": "/api/users/profile",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/users/profile",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"users",
+												"profile"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/users/profile",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"users",
+														"profile"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "/api/users/profile",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/users/profile?Name=proident in&DateOfBirth=2025-01-01&Phone=proident in",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"users",
+												"profile"
+											],
+											"query": [
+												{
+													"key": "Name",
+													"value": "proident in",
+													"description": "(Required) "
+												},
+												{
+													"key": "DateOfBirth",
+													"value": "2025-01-01",
+													"description": "(Required) "
+												},
+												{
+													"key": "Phone",
+													"value": "proident in"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/users/profile?Name=proident in&DateOfBirth=2025-01-01&Phone=proident in",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"users",
+														"profile"
+													],
+													"query": [
+														{
+															"key": "Name",
+															"value": "proident in",
+															"description": "(Required) "
+														},
+														{
+															"key": "DateOfBirth",
+															"value": "2025-01-01",
+															"description": "(Required) "
+														},
+														{
+															"key": "Phone",
+															"value": "proident in"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "{voucherId}",
+							"item": [
+								{
+									"name": "/api/users/:voucherId",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/users/:voucherId?page=56370239&size=56370239&sortBy=proident in&search=proident in&filter=proident in",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"users",
+												":voucherId"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "56370239"
+												},
+												{
+													"key": "size",
+													"value": "56370239"
+												},
+												{
+													"key": "sortBy",
+													"value": "proident in"
+												},
+												{
+													"key": "search",
+													"value": "proident in"
+												},
+												{
+													"key": "filter",
+													"value": "proident in"
+												}
+											],
+											"variable": [
+												{
+													"key": "voucherId",
+													"value": "56370239",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/users/:voucherId?page=56370239&size=56370239&sortBy=proident in&search=proident in&filter=proident in",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"users",
+														":voucherId"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "56370239"
+														},
+														{
+															"key": "size",
+															"value": "56370239"
+														},
+														{
+															"key": "sortBy",
+															"value": "proident in"
+														},
+														{
+															"key": "search",
+															"value": "proident in"
+														},
+														{
+															"key": "filter",
+															"value": "proident in"
+														}
+													],
+													"variable": [
+														{
+															"key": "voucherId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "/api/users/:id",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"laborum labo\",\n  \"email\": \"dolor\",\n  \"password\": \"et labore incididunt anim\",\n  \"role\": \"aute laborum ut\",\n  \"walletBalance\": -65182576.479345754,\n  \"dateOfBirth\": \"1961-07-12T18:18:31.212Z\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/users/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"users",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "56370239",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"name\": \"laborum labo\",\n  \"email\": \"dolor\",\n  \"password\": \"et labore incididunt anim\",\n  \"role\": \"aute laborum ut\",\n  \"walletBalance\": -65182576.479345754,\n  \"dateOfBirth\": \"1961-07-12T18:18:31.212Z\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/users/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"users",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "status",
+							"item": [
+								{
+									"name": "{Id}",
+									"item": [
+										{
+											"name": "/api/users/status/:Id",
+											"request": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"status\": false\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/users/status/:Id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"users",
+														"status",
+														":Id"
+													],
+													"variable": [
+														{
+															"key": "Id"
+														},
+														{
+															"key": "id",
+															"value": "56370239",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"status\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/users/status/:Id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"users",
+																"status",
+																":Id"
+															],
+															"variable": [
+																{
+																	"key": "Id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/api/users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/users?page=56370239&size=56370239&sortBy=proident in&search=proident in&filter=proident in",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "56370239"
+										},
+										{
+											"key": "size",
+											"value": "56370239"
+										},
+										{
+											"key": "sortBy",
+											"value": "proident in"
+										},
+										{
+											"key": "search",
+											"value": "proident in"
+										},
+										{
+											"key": "filter",
+											"value": "proident in"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/users?page=56370239&size=56370239&sortBy=proident in&search=proident in&filter=proident in",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"users"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "56370239"
+												},
+												{
+													"key": "size",
+													"value": "56370239"
+												},
+												{
+													"key": "sortBy",
+													"value": "proident in"
+												},
+												{
+													"key": "search",
+													"value": "proident in"
+												},
+												{
+													"key": "filter",
+													"value": "proident in"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/api/users",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"laborum labo\",\n  \"email\": \"dolor\",\n  \"password\": \"et labore incididunt anim\",\n  \"role\": \"aute laborum ut\",\n  \"walletBalance\": -65182576.479345754,\n  \"dateOfBirth\": \"1961-07-12T18:18:31.212Z\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"laborum labo\",\n  \"email\": \"dolor\",\n  \"password\": \"et labore incididunt anim\",\n  \"role\": \"aute laborum ut\",\n  \"walletBalance\": -65182576.479345754,\n  \"dateOfBirth\": \"1961-07-12T18:18:31.212Z\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/users",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"users"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "vouchers",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "take",
+									"item": [
+										{
+											"name": "/api/vouchers/:id/take",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/vouchers/:id/take",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"vouchers",
+														":id",
+														"take"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "56370239",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/vouchers/:id/take",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"vouchers",
+																":id",
+																"take"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "/api/vouchers/:id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/vouchers/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"vouchers",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "56370239",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/vouchers/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"vouchers",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "/api/vouchers/:id",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"voucherName\": \"commodo laboris mollit eiusmod\",\n  \"voucherCode\": \"amet qui commodo minim\",\n  \"description\": \"consectetur ullamco in\",\n  \"discountAmount\": 22126933.972158507,\n  \"startDate\": \"1975-12-06T13:14:36.604Z\",\n  \"endDate\": \"1991-07-10T08:15:49.579Z\",\n  \"usageLimit\": -67236288,\n  \"isActive\": true\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/vouchers/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"vouchers",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "56370239",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"voucherName\": \"commodo laboris mollit eiusmod\",\n  \"voucherCode\": \"amet qui commodo minim\",\n  \"description\": \"consectetur ullamco in\",\n  \"discountAmount\": 22126933.972158507,\n  \"startDate\": \"1975-12-06T13:14:36.604Z\",\n  \"endDate\": \"1991-07-10T08:15:49.579Z\",\n  \"usageLimit\": -67236288,\n  \"isActive\": true\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/vouchers/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"vouchers",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "/api/vouchers/:id",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/vouchers/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"vouchers",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "56370239",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/vouchers/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"vouchers",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "me",
+							"item": [
+								{
+									"name": "/api/vouchers/me",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"page\": 6879894,\n  \"size\": -67760270,\n  \"sortBy\": \"pariatur sint tempor cillum\",\n  \"search\": \"officia aute\",\n  \"filter\": \"occaecat veniam exercitation laboris\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/vouchers/me",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"vouchers",
+												"me"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/vouchers/me",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"vouchers",
+														"me"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "{userId}",
+							"item": [
+								{
+									"name": "/api/vouchers/:userId",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"page\": 6879894,\n  \"size\": -67760270,\n  \"sortBy\": \"pariatur sint tempor cillum\",\n  \"search\": \"officia aute\",\n  \"filter\": \"occaecat veniam exercitation laboris\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/vouchers/:userId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"vouchers",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId",
+													"value": "56370239",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/vouchers/:userId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"vouchers",
+														":userId"
+													],
+													"variable": [
+														{
+															"key": "userId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "expired-vouchers",
+							"item": [
+								{
+									"name": "/api/vouchers/expired-vouchers",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/vouchers/expired-vouchers",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"vouchers",
+												"expired-vouchers"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/vouchers/expired-vouchers",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"vouchers",
+														"expired-vouchers"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/api/vouchers",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"page\": 6879894,\n  \"size\": -67760270,\n  \"sortBy\": \"pariatur sint tempor cillum\",\n  \"search\": \"officia aute\",\n  \"filter\": \"occaecat veniam exercitation laboris\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/vouchers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"vouchers"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/vouchers",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"vouchers"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/api/vouchers",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"voucherName\": \"commodo laboris mollit eiusmod\",\n  \"voucherCode\": \"amet qui commodo minim\",\n  \"description\": \"consectetur ullamco in\",\n  \"discountAmount\": 22126933.972158507,\n  \"startDate\": \"1975-12-06T13:14:36.604Z\",\n  \"endDate\": \"1991-07-10T08:15:49.579Z\",\n  \"usageLimit\": -67236288,\n  \"isActive\": true\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/vouchers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"vouchers"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"voucherName\": \"commodo laboris mollit eiusmod\",\n  \"voucherCode\": \"amet qui commodo minim\",\n  \"description\": \"consectetur ullamco in\",\n  \"discountAmount\": 22126933.972158507,\n  \"startDate\": \"1975-12-06T13:14:36.604Z\",\n  \"endDate\": \"1991-07-10T08:15:49.579Z\",\n  \"usageLimit\": -67236288,\n  \"isActive\": true\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/vouchers",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"vouchers"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{bearerToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/"
+		}
+	]
+}

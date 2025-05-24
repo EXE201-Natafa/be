@@ -1,0 +1,6 @@
+@Natafa.API_HostAddress = http://localhost:5101
+
+GET {{Natafa.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
