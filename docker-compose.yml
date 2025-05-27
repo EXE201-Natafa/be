@@ -1,0 +1,28 @@
+services:
+  database:
+    image: mysql:8.0
+    container_name: natafa-mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: natafa_db      
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql    
+      - ./script.sql:/docker-entrypoint-initdb.d/script.sql
+
+  be:
+    build:
+      context: src
+      dockerfile: Natafa.Api/Dockerfile
+    container_name: natafa-be-container
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development    
+      ConnectionStrings__DbConnection: "Server=database;Database=natafa_db;User=root;Password=password;"  
+    ports:
+      - "5000:8080"
+    depends_on:
+      - database
+
+volumes:
+  db_data:

@@ -36,7 +36,7 @@ namespace Natafa.Api.Controllers
         // Lấy danh sách tất cả các voucher
         [HttpGet]
         [Route(VoucherRoute.GetVouchers)]
-        public async Task<IActionResult> GetAllVouchers(PaginateRequest request)
+        public async Task<IActionResult> GetAllVouchers([FromQuery] PaginateRequest request)
         {
             var result = await _voucherService.GetVouchersAsync(request);
             return result.Match(
@@ -48,7 +48,7 @@ namespace Natafa.Api.Controllers
         [HttpGet]
         [Route(VoucherRoute.GetMyVouchers)]
         [Authorize(Roles = UserConstant.USER_ROLE_CUSTOMER)]
-        public async Task<IActionResult> GetMyVouchers(PaginateRequest request)
+        public async Task<IActionResult> GetMyVouchers([FromQuery] PaginateRequest request)
         {
             var userId = Int32.Parse(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Sid).Value);
             var result = await _voucherService.GetVouchersByUserIdAsync(userId, request);
@@ -60,7 +60,7 @@ namespace Natafa.Api.Controllers
 
         [HttpGet]
         [Route(VoucherRoute.GetVouchersByUserId)]
-        public async Task<IActionResult> GetVouchersByUserId(int userId, PaginateRequest request)
+        public async Task<IActionResult> GetVouchersByUserId(int userId, [FromQuery] PaginateRequest request)
         {
             var result = await _voucherService.GetVouchersByUserIdAsync(userId, request);
             return result.Match(
