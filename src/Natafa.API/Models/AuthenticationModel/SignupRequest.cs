@@ -16,11 +16,11 @@ namespace Natafa.Api.Models.AuthenticationModel
         [MaxLength(255)]
         public string FullName { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Birthday is required")]
-        public DateOnly Birthday { get; set; }
+        //[Required(ErrorMessage = "Birthday is required")]
+        public DateOnly? Birthday { get; set; }
 
-        [Required(ErrorMessage = "Phone number is required")]
+        //[Required(ErrorMessage = "Phone number is required")]
         [Phone]
-        public string PhoneNumber { get; set; } = string.Empty;               
+        public string? PhoneNumber { get; set; }               
     }
 }
