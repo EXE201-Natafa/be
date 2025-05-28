@@ -5,10 +5,10 @@ namespace Natafa.Api.Models.UserModel
     public class UpdateProfileRequest
     {
         [Required]
-        public string Name { get; set; }
+        public string FullName { get; set; }
         [Required]
-        public DateOnly DateOfBirth { get; set; }
+        public DateOnly Birthday { get; set; }
         [Phone]
-        public string? Phone { get; set; }
+        public string? PhoneNumber { get; set; }
     }
 }
