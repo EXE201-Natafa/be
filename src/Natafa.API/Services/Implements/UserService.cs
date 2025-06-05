@@ -153,7 +153,7 @@ namespace Natafa.Api.Services.Implements
             Expression<Func<User, bool>> predicate = p =>
                 (string.IsNullOrEmpty(search) || p.FullName.Contains(search) ||
                                                  p.Email.Contains(search)) &&
-                (string.IsNullOrEmpty(filter) || filter == p.Role.ToLower());
+                (string.IsNullOrEmpty(filter) || filter.Equals(p.Role.ToLower()));
 
             var users = await _uow.GetRepository<User>().GetPagingListAsync(
                 selector: s => _mapper.Map<UserResponse>(s),
@@ -176,7 +176,7 @@ namespace Natafa.Api.Services.Implements
             Expression<Func<User, bool>> predicate = p =>
                 (string.IsNullOrEmpty(search) || p.FullName.Contains(search) ||
                                                  p.Email.Contains(search)) &&
-                (string.IsNullOrEmpty(filter) || filter == p.Role.ToLower()) &&
+                (string.IsNullOrEmpty(filter) || filter.Equals(p.Role.ToLower())) &&
                 p.UserVouchers.Any(x => x.VoucherId == voucherId);
 
             var users = await _uow.GetRepository<User>().GetPagingListAsync(
@@ -202,6 +202,6 @@ namespace Natafa.Api.Services.Implements
                 "date_desc" => q => q.OrderByDescending(p => p.Birthday),
                 _ => q => q.OrderByDescending(p => p.UserId) // Default sort
             };
-        }
+        }   
     }
 }

@@ -35,6 +35,7 @@ namespace Natafa.Api.Extensions
             service.AddTransient<IDashboardService, DashboardService>();
             service.AddTransient<IVoucherService, VoucherService>();
             service.AddTransient<IFeedbackService, FeedbackService>();
+            service.AddTransient<IWishListService, WishListService>();
 
             return service;
         }

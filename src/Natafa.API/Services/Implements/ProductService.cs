@@ -8,6 +8,7 @@ using Natafa.Api.ViewModels;
 using Natafa.Domain.Entities;
 using Natafa.Domain.Paginate;
 using Natafa.Repository.Interfaces;
+using Org.BouncyCastle.Asn1.Ocsp;
 using System.Linq.Expressions;
 
 namespace Natafa.Api.Services.Implements
@@ -17,6 +18,8 @@ namespace Natafa.Api.Services.Implements
         private readonly IUnitOfWork _uow;
         private readonly IMapper _mapper;
         private readonly ICloudinaryService _cloudinaryService;
+
+        private const int NUMBER_BEST_SELLER_PRODUCT = 15;
 
         public ProductService(IUnitOfWork uow, IMapper mapper, ICloudinaryService cloudinaryService)
         {
@@ -36,13 +39,13 @@ namespace Natafa.Api.Services.Implements
                 Expression<Func<Product, bool>> predicate = p =>
                     // Search filter
                     (string.IsNullOrEmpty(search) ||
-                     p.ProductName.ToLower().Contains(search) &&
+                        p.ProductName.ToLower().Contains(search)) &&
                     (string.IsNullOrEmpty(filter) ||
-                     (filter.Contains("active") && p.Status) ||
-                     (filter.Contains("inactive") && !p.Status)) &&
+                        (filter.Equals("active") && p.Status) ||
+                        (filter.Equals("inactive") && !p.Status)) &&
                     (categoryId == null || categoryId == p.CategoryId || categoryId == p.Category.ParentCategoryId) &&
                     (minPrice == null || p.ProductDetails.Any(pd => pd.Price * (1 - pd.Discount / 100) >= minPrice)) &&
-                    (maxPrice == null || p.ProductDetails.Any(pd => pd.Price * (1 - pd.Discount / 100) <= maxPrice)));
+                    (maxPrice == null || p.ProductDetails.Any(pd => pd.Price * (1 - pd.Discount / 100) <= maxPrice));
 
                 var result = await _uow.GetRepository<Product>().GetPagingListAsync<ProductResponse>(
 
@@ -62,6 +65,26 @@ namespace Natafa.Api.Services.Implements
                 return new MethodResult<IPaginate<ProductResponse>>.Failure(ex.Message, StatusCodes.Status500InternalServerError);
             }
         }
+
+        public async Task<MethodResult<IEnumerable<ProductResponse>>> GetBestSellerProductsAsync()
+        {
+            try
+            {
+                var result = await _uow.GetRepository<Product>().GetListAsync<ProductResponse>(
+
+                    selector: s => _mapper.Map<ProductResponse>(s),
+                    include: i => i.Include(x => x.ProductDetails).ThenInclude(x => x.OrderDetails)
+                                   .Include(x => x.ProductImages)
+                                   .Include(x => x.Category),
+                    orderBy: o => o.OrderByDescending(p => p.ProductDetails.Sum(pd => pd.OrderDetails.Sum(od => od.Quantity)))
+                );
+                return new MethodResult<IEnumerable<ProductResponse>>.Success(result.Take(NUMBER_BEST_SELLER_PRODUCT));
+            }
+            catch (Exception ex)
+            {
+                return new MethodResult<IEnumerable<ProductResponse>>.Failure(ex.Message, StatusCodes.Status500InternalServerError);
+            }
+        }        
 
         public async Task<MethodResult<ProductDetailResponse>> GetProductDetailByIdAsync(int id)
         {
@@ -256,6 +279,6 @@ namespace Natafa.Api.Services.Implements
                 "date_desc" => q => q.OrderByDescending(p => p.CreatedDate),
                 _ => q => q.OrderByDescending(p => p.ProductId) // Default sort
             };
-        }
+        }        
     }
 }

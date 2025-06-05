@@ -30,6 +30,17 @@ namespace Natafa.Api.Controllers
         }
 
         [HttpGet]
+        [Route(ProductRoute.GetBestSellerProducts)]
+        public async Task<ActionResult> GetBestSellerProducts()
+        {
+            var result = await _productService.GetBestSellerProductsAsync();
+            return result.Match(
+                (l, c) => Problem(detail: l, statusCode: c),
+                Ok
+            );
+        }
+
+        [HttpGet]
         [Route(ProductRoute.GetProductDetail)]
         public async Task<ActionResult> GetProductDetail(int id)
         {

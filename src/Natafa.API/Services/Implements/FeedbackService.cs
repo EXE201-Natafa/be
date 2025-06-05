@@ -111,8 +111,8 @@ namespace Natafa.Api.Services.Implements
                 Expression<Func<Feedback, bool>> predicate = p =>
                         (string.IsNullOrEmpty(search) || p.Comment.Contains(search)) &&
                         (string.IsNullOrEmpty(filter) || 
-                            (filter.Contains("active") && p.Status) ||
-                            (filter.Contains("inactive") && !p.Status)) &&  
+                            (filter.Equals("active") && p.Status) ||
+                            (filter.Equals("inactive") && !p.Status)) &&  
                         (rating == null || p.Rating == rating) &&
                         p.ProductId == productId;
 

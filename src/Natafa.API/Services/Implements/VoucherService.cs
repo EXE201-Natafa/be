@@ -48,8 +48,8 @@ namespace Natafa.Api.Services.Implements
                 (string.IsNullOrEmpty(search) || p.VoucherName.Contains(search) ||
                                                  p.VoucherCode.Contains(search)) &&
                 (string.IsNullOrEmpty(filter) ||
-                    (filter.Contains("active") && p.Status) ||
-                     (filter.Contains("inactive") && !p.Status));
+                    (filter.Equals("active") && p.Status) ||
+                     (filter.Equals("inactive") && !p.Status));
 
             var result = await _uow.GetRepository<Voucher>().GetPagingListAsync<VoucherResponse>(
                     selector: s => _mapper.Map<VoucherResponse>(s),
@@ -72,8 +72,8 @@ namespace Natafa.Api.Services.Implements
                 (string.IsNullOrEmpty(search) || p.VoucherName.Contains(search) ||
                                                  p.VoucherCode.Contains(search)) &&
                 (string.IsNullOrEmpty(filter) ||
-                    (filter.Contains("active") && p.Status) ||
-                     (filter.Contains("inactive") && !p.Status)) &&
+                    (filter.Equals("active") && p.Status) ||
+                     (filter.Equals("inactive") && !p.Status)) &&
                 p.UserVouchers.Any(x => x.UserId == userId);
 
             var result = await _uow.GetRepository<Voucher>().GetPagingListAsync<VoucherResponse>(

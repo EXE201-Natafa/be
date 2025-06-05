@@ -9,9 +9,10 @@ namespace Natafa.Api.Services.Interfaces
     public interface IProductService
     {
         Task<MethodResult<IPaginate<ProductResponse>>> GetProductsAsync(PaginateRequest request, int? categoryId, decimal? minPrice, decimal? maxPrice);
+        Task<MethodResult<IEnumerable<ProductResponse>>> GetBestSellerProductsAsync();
         Task<MethodResult<ProductDetailResponse>> GetProductDetailByIdAsync(int id);
         Task<MethodResult<string>> CreateProductAsync(ProductCreateRequest request);
         Task<MethodResult<string>> UpdateProductAsync(int id, ProductUpdateRequest request);
-        Task<MethodResult<string>> DeleteProductAsync(int id);
+        Task<MethodResult<string>> DeleteProductAsync(int id);        
     }
 }
