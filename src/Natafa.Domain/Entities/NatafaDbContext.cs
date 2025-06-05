@@ -40,8 +40,6 @@ public partial class NatafaDbContext : DbContext
 
     public virtual DbSet<ShippingPriceTable> ShippingPriceTables { get; set; }
 
-    public virtual DbSet<Subcategory> Subcategories { get; set; }
-
     public virtual DbSet<Transaction> Transactions { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
@@ -64,12 +62,25 @@ public partial class NatafaDbContext : DbContext
 
             entity.ToTable("category");
 
+            entity.HasIndex(e => e.ParentCategoryId, "parent_category_id");
+
             entity.Property(e => e.CategoryId).HasColumnName("category_id");
             entity.Property(e => e.CategoryName)
                 .HasMaxLength(255)
                 .HasColumnName("category_name")
                 .UseCollation("utf8mb3_general_ci")
                 .HasCharSet("utf8mb3");
+            entity.Property(e => e.Image)
+                .HasMaxLength(255)
+                .HasColumnName("image")
+                .UseCollation("utf8mb3_general_ci")
+                .HasCharSet("utf8mb3");
+            entity.Property(e => e.ParentCategoryId).HasColumnName("parent_category_id");
+
+            entity.HasOne(d => d.ParentCategory).WithMany(p => p.InverseParentCategory)
+                .HasForeignKey(d => d.ParentCategoryId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("category_ibfk_1");
         });
 
         modelBuilder.Entity<Feedback>(entity =>
@@ -247,9 +258,10 @@ public partial class NatafaDbContext : DbContext
 
             entity.ToTable("product");
 
-            entity.HasIndex(e => e.SubcategoryId, "subcategory_id");
+            entity.HasIndex(e => e.CategoryId, "category_id");
 
             entity.Property(e => e.ProductId).HasColumnName("product_id");
+            entity.Property(e => e.CategoryId).HasColumnName("category_id");
             entity.Property(e => e.CreatedDate)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .HasColumnType("datetime")
@@ -268,13 +280,12 @@ public partial class NatafaDbContext : DbContext
                 .IsRequired()
                 .HasDefaultValueSql("'1'")
                 .HasColumnName("status");
-            entity.Property(e => e.SubcategoryId).HasColumnName("subcategory_id");
             entity.Property(e => e.Summary)
                 .HasColumnType("text")
                 .HasColumnName("summary");
 
-            entity.HasOne(d => d.Subcategory).WithMany(p => p.Products)
-                .HasForeignKey(d => d.SubcategoryId)
+            entity.HasOne(d => d.Category).WithMany(p => p.Products)
+                .HasForeignKey(d => d.CategoryId)
                 .HasConstraintName("product_ibfk_1");
         });
 
@@ -382,27 +393,6 @@ public partial class NatafaDbContext : DbContext
             entity.Property(e => e.ToWeight)
                 .HasPrecision(10, 2)
                 .HasColumnName("to_weight");
-        });
-
-        modelBuilder.Entity<Subcategory>(entity =>
-        {
-            entity.HasKey(e => e.SubcategoryId).HasName("PRIMARY");
-
-            entity.ToTable("subcategory");
-
-            entity.HasIndex(e => e.CategoryId, "category_id");
-
-            entity.Property(e => e.SubcategoryId).HasColumnName("subcategory_id");
-            entity.Property(e => e.CategoryId).HasColumnName("category_id");
-            entity.Property(e => e.SubcategoryName)
-                .HasMaxLength(255)
-                .HasColumnName("subcategory_name")
-                .UseCollation("utf8mb3_general_ci")
-                .HasCharSet("utf8mb3");
-
-            entity.HasOne(d => d.Category).WithMany(p => p.Subcategories)
-                .HasForeignKey(d => d.CategoryId)
-                .HasConstraintName("subcategory_ibfk_1");
         });
 
         modelBuilder.Entity<Transaction>(entity =>

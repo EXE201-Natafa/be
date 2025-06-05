@@ -16,7 +16,7 @@
 
         public bool Status { get; set; }
 
-        public SubcategoryResponse Subcategory { get; set; } = null!;
+        public CategoryResponse Category { get; set; } = null!;
     }
 
     public class ProductDetailResponse
@@ -35,7 +35,7 @@
 
         public bool Status { get; set; }
 
-        public SubcategoryResponse Subcategory { get; set; } = null!;
+        public CategoryResponse Category { get; set; } = null!;
 
         public List<DetailProduct> ProductDetails { get; set; } = new List<DetailProduct>();
 

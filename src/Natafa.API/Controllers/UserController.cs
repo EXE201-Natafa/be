@@ -12,7 +12,7 @@ using Natafa.Api.Models;
 
 namespace Natafa.Api.Controllers
 {
-    public class UserController : ControllerBase
+    public class UserController : BaseApiController
     {
         private readonly IUserService _userService;
 

@@ -9,8 +9,7 @@ using static Natafa.Api.Routes.Router;
 
 namespace Natafa.Api.Controllers
 {
-    [ApiController]
-    public class CategoryController : ControllerBase
+    public class CategoryController : BaseApiController
     {
         private readonly ICategoryService _categoryService;
 

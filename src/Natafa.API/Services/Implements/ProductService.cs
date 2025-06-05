@@ -25,7 +25,7 @@ namespace Natafa.Api.Services.Implements
             _cloudinaryService = cloudinaryService;
         }
 
-        public async Task<MethodResult<IPaginate<ProductResponse>>> GetProductsAsync(PaginateRequest request, int? subcategoryId, decimal? minPrice, decimal? maxPrice)
+        public async Task<MethodResult<IPaginate<ProductResponse>>> GetProductsAsync(PaginateRequest request, int? categoryId, decimal? minPrice, decimal? maxPrice)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace Natafa.Api.Services.Implements
                     (string.IsNullOrEmpty(filter) ||
                      (filter.Contains("active") && p.Status) ||
                      (filter.Contains("inactive") && !p.Status)) &&
-                    (subcategoryId == null || subcategoryId == p.SubcategoryId) &&
+                    (categoryId == null || categoryId == p.CategoryId || categoryId == p.Category.ParentCategoryId) &&
                     (minPrice == null || p.ProductDetails.Any(pd => pd.Price * (1 - pd.Discount / 100) >= minPrice)) &&
                     (maxPrice == null || p.ProductDetails.Any(pd => pd.Price * (1 - pd.Discount / 100) <= maxPrice)));
 
@@ -51,7 +51,7 @@ namespace Natafa.Api.Services.Implements
                     orderBy: BuildOrderBy(request.sortBy),
                     include: i => i.Include(x => x.ProductDetails)
                                    .Include(x => x.ProductImages)
-                                   .Include(x => x.Subcategory),
+                                   .Include(x => x.Category),
                     page: page,
                     size: size
                 );
@@ -72,7 +72,7 @@ namespace Natafa.Api.Services.Implements
                     selector: s => _mapper.Map<ProductDetailResponse>(s),
                     include: i => i.Include(x => x.ProductDetails)
                                    .Include(x => x.ProductImages)
-                                   .Include(x => x.Subcategory)                    
+                                   .Include(x => x.Category)                    
                 );
                 return new MethodResult<ProductDetailResponse>.Success(result);
             }
@@ -88,6 +88,14 @@ namespace Natafa.Api.Services.Implements
             {
                 await _uow.BeginTransactionAsync();
                 
+                var checkExitstCate = await _uow.GetRepository<Category>().SingleOrDefaultAsync(
+                    predicate: c => c.CategoryId == request.CategoryId
+                );
+                if (checkExitstCate == null)
+                {
+                    return new MethodResult<string>.Failure("Category not found", StatusCodes.Status404NotFound);
+                }                
+
                 var product = _mapper.Map<Product>(request);
 
                 if (request.ProductImages != null)
@@ -134,6 +142,14 @@ namespace Natafa.Api.Services.Implements
                 if (product == null)
                 {
                     return new MethodResult<string>.Failure("Product not found", StatusCodes.Status404NotFound);
+                }
+
+                var checkExitstCate = await _uow.GetRepository<Category>().SingleOrDefaultAsync(
+                    predicate: c => c.CategoryId == request.CategoryId
+                );
+                if (checkExitstCate == null)
+                {
+                    return new MethodResult<string>.Failure("Category not found", StatusCodes.Status404NotFound);
                 }
 
                 // Upload và quản lý hình ảnh

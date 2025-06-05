@@ -24,14 +24,10 @@ CREATE TABLE refresh_token (
 
 CREATE TABLE category (
     category_id INT AUTO_INCREMENT PRIMARY KEY,
-    category_name NVARCHAR(255) NOT NULL
-);
-
-CREATE TABLE subcategory (
-    subcategory_id INT AUTO_INCREMENT PRIMARY KEY,
-    subcategory_name NVARCHAR(255) NOT NULL,
-    category_id INT NOT NULL,
-    FOREIGN KEY (category_id) REFERENCES category(category_id) ON DELETE CASCADE
+    category_name NVARCHAR(255) NOT NULL,
+    image NVARCHAR(255),
+    parent_category_id INT,
+    FOREIGN KEY (parent_category_id) REFERENCES category(category_id) ON DELETE CASCADE
 );
 
 CREATE TABLE product (
@@ -40,9 +36,9 @@ CREATE TABLE product (
     summary TEXT,
     material NVARCHAR(255) NOT NULL,
     created_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `status` BOOLEAN NOT NULL DEFAULT 1,  
-    subcategory_id INT NOT NULL,
-    FOREIGN KEY (subcategory_id) REFERENCES subcategory(subcategory_id) ON DELETE CASCADE
+    `status` BOOL NOT NULL DEFAULT 1,  
+    category_id INT NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES category(category_id) ON DELETE CASCADE
 );
 
 CREATE TABLE product_detail (
@@ -84,13 +80,13 @@ CREATE TABLE voucher (
     end_date DATETIME NOT NULL,
     minimum_purchase DECIMAL(10, 2) NOT NULL DEFAULT 0,
     usage_limit INT NOT NULL,
-    `status` BOOLEAN NOT NULL DEFAULT 1
+    `status` BOOL NOT NULL DEFAULT 1
 );
 
 CREATE TABLE user_voucher (
     user_voucher_id INT AUTO_INCREMENT PRIMARY KEY,
     redeemed_date DATETIME,
-    `status` BOOLEAN NOT NULL DEFAULT 0,
+    `status` BOOL NOT NULL DEFAULT 0,
     user_id INT NOT NULL,
     voucher_id INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES `user`(user_id),
@@ -141,7 +137,7 @@ CREATE TABLE order_tracking (
     tracking_id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT NOT NULL,
     `status` ENUM('Pending', 'Confirmed', 'Shipping', 'Completed', 'Canceled', 'Returned', 'Denied') NOT NULL,
-    updated_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (order_id) REFERENCES `order`(order_id) ON DELETE CASCADE
 );
 
@@ -150,7 +146,7 @@ CREATE TABLE feedback (
     rating FLOAT NOT NULL,
     `comment` TEXT,
     created_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `status` BOOLEAN NOT NULL DEFAULT 1,
+    `status` BOOL NOT NULL DEFAULT 1,
     user_id INT NOT NULL,
     product_id INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES `user`(user_id) ON DELETE CASCADE,

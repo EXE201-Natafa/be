@@ -10,7 +10,7 @@ using static Natafa.Api.Routes.Router;
 
 namespace Natafa.Api.Controllers
 {
-    public class OrderController : ControllerBase
+    public class OrderController : BaseApiController
     {
         private readonly IOrderService _orderService;
         private readonly ICloudinaryService _cloud;

@@ -11,8 +11,7 @@ using Natafa.Api.Models;
 
 namespace Natafa.Api.Controllers
 {
-    [ApiController]
-    public class VoucherController : ControllerBase
+    public class VoucherController : BaseApiController
     {
         private readonly IVoucherService _voucherService;
 

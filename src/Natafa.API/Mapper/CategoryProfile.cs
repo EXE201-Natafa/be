@@ -9,14 +9,15 @@ namespace Natafa.Api.Mapper
     {
         public CategoryProfile()
         {
-            CreateMap<Category, CategoryResponse>();
-            CreateMap<Subcategory, SubcategoryResponse>();
+            CreateMap<Category, CategoryResponse>()
+                .ForMember(dest => dest.Subcategories, opt => opt.MapFrom(src => src.InverseParentCategory));
+            CreateMap<Category, SubcategoryResponse>()
+                .ForMember(dest => dest.SubcategoryId, opt => opt.MapFrom(src => src.CategoryId))
+                .ForMember(dest => dest.SubcategoryName, opt => opt.MapFrom(src => src.CategoryName));
 
             CreateMap<CategoryCreateRequest, Category>();
-            CreateMap<SubcategoryCreateRequest, Subcategory>();
 
             CreateMap<CategoryUpdateRequest, Category>();
-            CreateMap<SubcategoryUpdateRequest, Subcategory>();
         }
     }
 }

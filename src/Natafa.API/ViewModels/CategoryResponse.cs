@@ -4,11 +4,13 @@
     {
         public int CategoryId { get; set; }
         public string CategoryName { get; set; } = null!;
+        public string? Image { get; set; }
         public List<SubcategoryResponse> Subcategories { get; set; } = new List<SubcategoryResponse>();
     }
     public class SubcategoryResponse
     {
         public int SubcategoryId { get; set; }
         public string SubcategoryName { get; set; } = null!;
+        public string? Image { get; set; }
     }
 }

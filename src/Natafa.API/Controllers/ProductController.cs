@@ -9,7 +9,7 @@ using static Natafa.Api.Routes.Router;
 
 namespace Natafa.Api.Controllers
 {
-    public class ProductController : ControllerBase
+    public class ProductController : BaseApiController
     {
         private readonly IProductService _productService;
 
@@ -20,9 +20,9 @@ namespace Natafa.Api.Controllers
 
         [HttpGet]
         [Route(ProductRoute.GetProducts)]
-        public async Task<ActionResult> GetCategories(PaginateRequest request, int? subcategoryId, decimal? minPrice, decimal? maxPrice)
+        public async Task<ActionResult> GetProducts([FromQuery] PaginateRequest request, int? categoryId, decimal? minPrice, decimal? maxPrice)
         {
-            var result = await _productService.GetProductsAsync(request, subcategoryId, minPrice, maxPrice);
+            var result = await _productService.GetProductsAsync(request, categoryId, minPrice, maxPrice);
             return result.Match(
                 (l, c) => Problem(detail: l, statusCode: c),
                 Ok

@@ -8,7 +8,7 @@ namespace Natafa.Api.Services.Interfaces
 {
     public interface IProductService
     {
-        Task<MethodResult<IPaginate<ProductResponse>>> GetProductsAsync(PaginateRequest request, int? subcategoryId, decimal? minPrice, decimal? maxPrice);
+        Task<MethodResult<IPaginate<ProductResponse>>> GetProductsAsync(PaginateRequest request, int? categoryId, decimal? minPrice, decimal? maxPrice);
         Task<MethodResult<ProductDetailResponse>> GetProductDetailByIdAsync(int id);
         Task<MethodResult<string>> CreateProductAsync(ProductCreateRequest request);
         Task<MethodResult<string>> UpdateProductAsync(int id, ProductUpdateRequest request);

@@ -64,16 +64,23 @@ namespace Natafa.Api.Services.Implements
                     return new MethodResult<string>.Failure("Email already in use", StatusCodes.Status400BadRequest);
                 }
 
-                if (request.PhoneNumber != null)
+                //if (request.PhoneNumber != null)
+                //{
+                //    var dupePhoneUser = await _uow.GetRepository<User>().SingleOrDefaultAsync(
+                //    predicate: p => p.PhoneNumber == request.PhoneNumber
+                //);
+                //    if (dupePhoneUser != null)
+                //    {
+                //        return new MethodResult<string>.Failure("Phone number already in use", StatusCodes.Status400BadRequest);
+                //    }
+                //}
+                if (request.Birthday != null)
                 {
-                    var dupePhoneUser = await _uow.GetRepository<User>().SingleOrDefaultAsync(
-                    predicate: p => p.PhoneNumber == request.PhoneNumber
-                );
-                    if (dupePhoneUser != null)
+                    if (request.Birthday >= DateOnly.FromDateTime(DateTime.Today))
                     {
-                        return new MethodResult<string>.Failure("Phone number already in use", StatusCodes.Status400BadRequest);
+                        return new MethodResult<string>.Failure("Invalid Birthday", StatusCodes.Status400BadRequest);
                     }
-                }                
+                }
 
                 var user = _mapper.Map<User>(request);
                 await _uow.GetRepository<User>().InsertAsync(user);

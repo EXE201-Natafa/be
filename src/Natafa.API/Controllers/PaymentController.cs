@@ -8,7 +8,7 @@ using Natafa.Api.Routes;
 
 namespace Natafa.Api.Controllers
 {
-    public class PaymentController : ControllerBase
+    public class PaymentController : BaseApiController
     {
         private readonly IPaymentService _paymentService;
 

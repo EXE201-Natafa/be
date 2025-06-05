@@ -7,7 +7,7 @@ using static Natafa.Api.Routes.Router;
 
 namespace Natafa.Api.Controllers
 {
-    public class AuthenticationController : ControllerBase
+    public class AuthenticationController : BaseApiController
     {
         private readonly IAuthenticationService _authenticationService;
         private readonly IRefreshTokenService _refreshTokenService;

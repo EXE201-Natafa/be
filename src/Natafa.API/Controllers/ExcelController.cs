@@ -8,7 +8,7 @@ using Natafa.Api.Routes;
 
 namespace Natafa.Api.Controllers
 {
-    public class ExcelController : ControllerBase
+    public class ExcelController : BaseApiController
     {
         private readonly IExcelService _excelService;
 

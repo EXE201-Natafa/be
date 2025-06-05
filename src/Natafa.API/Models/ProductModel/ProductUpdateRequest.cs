@@ -9,7 +9,7 @@ namespace Natafa.Api.Models.ProductModel
         public string? Summary { get; set; }
         public string? Material { get; set; } = null!;
         [Required]
-        public int SubcategoryId { get; set; }
+        public int CategoryId { get; set; }
         public bool IsUpdateImagePackage { get; set; }
         public List<ProductDetailUpdateRequest> ProductDetails { get; set; } = new List<ProductDetailUpdateRequest>();
         public List<IFormFile> ProductImages { get; set; } = new List<IFormFile>();

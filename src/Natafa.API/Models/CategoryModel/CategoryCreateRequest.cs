@@ -6,12 +6,7 @@ namespace Natafa.Api.Models.CategoryModel
     {
         [Required]
         public string CategoryName { get; set; } = null!;
-        public List<SubcategoryCreateRequest> Subcategories { get; set; } = new List<SubcategoryCreateRequest>();
-    }
-
-    public class SubcategoryCreateRequest
-    {
-        [Required]
-        public string SubcategoryName { get; set; } = null!;
+        public IFormFile? Image { get; set; }
+        public int? ParentCategoryId { get; set; } 
     }
 }

@@ -9,7 +9,7 @@ using Natafa.Api.Models;
 
 namespace Natafa.Api.Controllers
 {
-    public class FeedbackController : ControllerBase
+    public class FeedbackController : BaseApiController
     {
         private readonly IFeedbackService _feedbackService;
 

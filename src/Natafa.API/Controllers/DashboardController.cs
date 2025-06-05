@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Natafa.Api.Controllers
 {
     [Authorize(Roles = UserConstant.USER_ROLE_ADMIN)]
-    public class DashboardController : ControllerBase
+    public class DashboardController : BaseApiController
     {
         private readonly IExcelService _excelService;
         private readonly IDashboardService _dashboardService;

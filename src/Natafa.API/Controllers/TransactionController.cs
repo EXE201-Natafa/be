@@ -9,8 +9,7 @@ using Org.BouncyCastle.Asn1.Ocsp;
 
 namespace Natafa.Api.Controllers
 {
-    [ApiController]
-    public class TransactionController : ControllerBase
+    public class TransactionController : BaseApiController
     {
         private readonly ITransactionService _transactionService;
 
