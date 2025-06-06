@@ -196,22 +196,23 @@ INSERT INTO shipping_price_table (from_weight, to_weight, in_region, out_region,
 
 -- Main categories
 INSERT INTO category (category_name, image) VALUES
-('Anime', 'https://res.cloudinary.com/dg9k8inku/image/authenticated/s--m7uersrt--/v1747794571/wqeav9v0avz3ee2nsibq.jpg'),
-('Superheroes', 'https://res.cloudinary.com/dg9k8inku/image/authenticated/s--m7uersrt--/v1747794571/wqeav9v0avz3ee2nsibq.jpg'),
-('Gaming', 'https://res.cloudinary.com/dg9k8inku/image/authenticated/s--m7uersrt--/v1747794571/wqeav9v0avz3ee2nsibq.jpg'),
-('Movies & TV', 'https://res.cloudinary.com/dg9k8inku/image/authenticated/s--m7uersrt--/v1747794571/wqeav9v0avz3ee2nsibq.jpg'),
+('Anime', 'https://www.monsterlab.vn/wp-content/uploads/2024/07/anime-cover.png'),
+('Superheroes', 'https://cellphones.com.vn/sforum/wp-content/uploads/2023/01/top-phim-sieu-nhan-hay-nhat-1-1.jpg'),
+('Gaming', 'https://i0.wp.com/newdigitalage.co/wp-content/uploads/2022/06/iStock-1334436084-jpg.webp?fit=1024%2C683&ssl=1'),
+('Movies & TV', 'https://dnm.nflximg.net/api/v6/BvVbc2Wxr2w6QuoANoSpJKEIWjQ/AAAAQYSYKbqZFoEIeGc-wrY2M-TY013cQsmYTg9S6KujIEFdY0afNVR3a53-z1b_WepEdcrSH7ogRkZfDdm0WaKkhtTSd4guhpBFXjkgwUPHegVn48146BjSqcQvHlMI6wEtLJ9SfOghf28FxVFQMuZGvhabdlQ.jpg?r=61b'),
 ('Original Designs', 'https://res.cloudinary.com/dg9k8inku/image/authenticated/s--m7uersrt--/v1747794571/wqeav9v0avz3ee2nsibq.jpg');
 
 -- Subcategories
 INSERT INTO category (category_name, image, parent_category_id) VALUES
-('Naruto', 'https://res.cloudinary.com/dg9k8inku/image/authenticated/s--m7uersrt--/v1747794571/wqeav9v0avz3ee2nsibq.jpg', 1),
-('Dragon Ball', 'https://res.cloudinary.com/dg9k8inku/image/authenticated/s--m7uersrt--/v1747794571/wqeav9v0avz3ee2nsibq.jpg', 1),
-('One Piece', 'https://res.cloudinary.com/dg9k8inku/image/authenticated/s--m7uersrt--/v1747794571/wqeav9v0avz3ee2nsibq.jpg', 1),
-('Avengers', 'https://res.cloudinary.com/dg9k8inku/image/authenticated/s--m7uersrt--/v1747794571/wqeav9v0avz3ee2nsibq.jpg', 2),
+('Naruto', 'https://www.siliconera.com/wp-content/uploads/2023/07/naruto-20th-anniversary-episodes-07032023.png', 1),
+('Dragon Ball', 'https://image.made-in-china.com/2f0j00DMTikNBWbvRg/New-Arrived-27-Gk-Fight-Super-Saiyan-Son-Goku-Dragon-Ball-Wholesale-Japanese-Anime-Action-Figure-Toy-Model.webp', 1),
+('One Piece', 'https://static3.cbrimages.com/wordpress/wp-content/uploads/2020/03/One-Piece-Cast.jpg', 1),
+('Avengers', 'https://cityofgood.sg/wp-content/uploads/2020/10/Avenger0.jpg', 2),
 ('Batman', 'https://res.cloudinary.com/dg9k8inku/image/authenticated/s--m7uersrt--/v1747794571/wqeav9v0avz3ee2nsibq.jpg', 2),
-('Overwatch', 'https://res.cloudinary.com/dg9k8inku/image/authenticated/s--m7uersrt--/v1747794571/wqeav9v0avz3ee2nsibq.jpg', 3),
-('Star Wars', 'https://res.cloudinary.com/dg9k8inku/image/authenticated/s--m7uersrt--/v1747794571/wqeav9v0avz3ee2nsibq.jpg', 4),
-('Harry Potter', 'https://res.cloudinary.com/dg9k8inku/image/authenticated/s--m7uersrt--/v1747794571/wqeav9v0avz3ee2nsibq.jpg', 4);
+('Overwatch', 'https://www.denofgeek.com/wp-content/uploads/2023/04/Overwatch-2.jpg?fit=1920%2C1080', 3),
+('Star Wars', 'https://cdn-images.vtv.vn/zoom/640_400/66349b6076cb4dee98746cf1/2024/11/09/hb-disneyplus-skywalkersaga-mobile-19267-e964ed2c-1--57131370325514295168852-14870489541703807402253.jpeg', 4),
+('Harry Potter', 'https://m.yodycdn.com/blog/harry-potter-co-may-phan-yody-vn-3.jpg', 4),
+('Gaoranger','https://picture.dzogame.vn/Img/eng1442989122_pp_066.jpg',3);
 
 INSERT INTO product (product_name, summary, material, category_id) VALUES
 -- Products in Anime
