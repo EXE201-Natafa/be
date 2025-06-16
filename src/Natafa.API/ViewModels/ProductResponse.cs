@@ -21,7 +21,7 @@
 
     public class ProductDetailResponse
     {
-        public int ProductDetailId { get; set; }
+        public int ProductId { get; set; }
 
         public string ProductName { get; set; } = null!;
 
@@ -29,7 +29,7 @@
 
         public string Material { get; set; } = null!;
 
-        public int SubcategoryId { get; set; }
+        public int CategoryId { get; set; }
 
         public DateTime? CreatedDate { get; set; }
 
