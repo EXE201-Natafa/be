@@ -91,7 +91,7 @@ namespace Natafa.Api.Services.Implements
             try
             {                
                 var result = await _uow.GetRepository<Product>().SingleOrDefaultAsync<ProductDetailResponse>(
-
+                    predicate: p => p.ProductId == id,
                     selector: s => _mapper.Map<ProductDetailResponse>(s),
                     include: i => i.Include(x => x.ProductDetails)
                                    .Include(x => x.ProductImages)
