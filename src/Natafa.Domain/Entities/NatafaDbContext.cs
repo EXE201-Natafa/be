@@ -38,6 +38,8 @@ public partial class NatafaDbContext : DbContext
 
     public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
 
+    public virtual DbSet<ShippingAddress> ShippingAddresses { get; set; }
+
     public virtual DbSet<ShippingPriceTable> ShippingPriceTables { get; set; }
 
     public virtual DbSet<Transaction> Transactions { get; set; }
@@ -155,6 +157,11 @@ public partial class NatafaDbContext : DbContext
             entity.Property(e => e.Address)
                 .HasMaxLength(150)
                 .HasColumnName("address")
+                .UseCollation("utf8mb3_general_ci")
+                .HasCharSet("utf8mb3");
+            entity.Property(e => e.FullName)
+                .HasMaxLength(255)
+                .HasColumnName("full_name")
                 .UseCollation("utf8mb3_general_ci")
                 .HasCharSet("utf8mb3");
             entity.Property(e => e.OrderCode)
@@ -366,6 +373,35 @@ public partial class NatafaDbContext : DbContext
             entity.HasOne(d => d.User).WithMany(p => p.RefreshTokens)
                 .HasForeignKey(d => d.UserId)
                 .HasConstraintName("refresh_token_ibfk_1");
+        });
+
+        modelBuilder.Entity<ShippingAddress>(entity =>
+        {
+            entity.HasKey(e => e.ShippingAddressId).HasName("PRIMARY");
+
+            entity.ToTable("shipping_address");
+
+            entity.HasIndex(e => e.UserId, "user_id");
+
+            entity.Property(e => e.ShippingAddressId).HasColumnName("shipping_address_id");
+            entity.Property(e => e.Address)
+                .HasMaxLength(150)
+                .HasColumnName("address");
+            entity.Property(e => e.FullName)
+                .HasMaxLength(255)
+                .HasColumnName("full_name")
+                .UseCollation("utf8mb3_general_ci")
+                .HasCharSet("utf8mb3");
+            entity.Property(e => e.IsDefault).HasColumnName("is_default");
+            entity.Property(e => e.PhoneNumber)
+                .HasMaxLength(15)
+                .HasColumnName("phone_number");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
+
+            entity.HasOne(d => d.User).WithMany(p => p.ShippingAddresses)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("shipping_address_ibfk_1");
         });
 
         modelBuilder.Entity<ShippingPriceTable>(entity =>

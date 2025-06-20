@@ -131,5 +131,13 @@ namespace Natafa.Api.Routes
             public const string GetWishList = $"{WishList}";
             public const string AddToWishList = $"{WishList}/{Id}";
         }
+
+        public static class ShippingAddressRoute
+        {
+            public const string ShippingAddress = $"{prefix}shippingAddresses";
+            public const string GetUpdateDelete = $"{ShippingAddress}/{Id}";
+            public const string GetShippingAddresses = $"{ShippingAddress}";
+            public const string CreateShippingAddress = $"{ShippingAddress}";
+        }
     }
 }

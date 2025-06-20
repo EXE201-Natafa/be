@@ -9,41 +9,39 @@ namespace Natafa.Api.ViewModels
 
         public int UserId { get; set; }
 
-        public string Name { get; set; } = null!;
+        public string OrderCode { get; set; } = null!;
 
-        public string Email { get; set; } = null!;
+        public string FullName { get; set; } = null!;
 
         public string Address { get; set; } = null!;
 
-        public string Phone { get; set; } = null!;
+        public string PhoneNumber { get; set; } = null!;
 
         public decimal TotalAmount { get; set; }
 
-        public DateTime OrderDate { get; set; }
+        public VoucherResponse? Voucher { get; set; }
 
-        public VoucherResponse Voucher { get; set; }
+        public List<OrderDetailResponse> OrderDetails { get; set; } = null!;
 
-        public List<OrderDetailResponse> Details { get; set; } = null!;
+        public List<OrderTrackingResponse> OrderTrackings { get; set; } = null!;
 
-        public List<OrderStatusResponse> Statuses { get; set; } = null!;
-
-        public TransactionResponse Transaction { get; set; }
+        public TransactionResponse? Transaction { get; set; }
     }
 
     public class OrderDetailResponse
     {
         public int OrderDetailId { get; set; }
 
-        public int? BlindBoxId { get; set; }
-
-        public int? PackageId { get; set; }
+        public int ProductDetailId { get; set; }
 
         public decimal Price { get; set; }
+
+        public int Quantity { get; set; }
     }
 
-    public class OrderStatusResponse
+    public class OrderTrackingResponse
     {
-        public string? Status { get; set; }
+        public string Status { get; set; } = null!;
 
         public DateTime UpdateTime { get; set; }
     }

@@ -140,13 +140,18 @@ namespace Natafa.Api.Services.Implements
 
         private async Task CreateOrderTrackingAsync(Order order)
         {
-            var orderTracking = new OrderTracking
+            //var orderTracking = new OrderTracking
+            //{
+            //    OrderId = order.OrderId,
+            //    Status = OrderConstant.ORDER_STATUS_PENDING,
+            //    UpdatedDate = DateTime.Now
+            //};
+            //await _uow.GetRepository<OrderTracking>().InsertAsync(orderTracking);
+            order.OrderTrackings.Add(new OrderTracking
             {
-                OrderId = order.OrderId,
                 Status = OrderConstant.ORDER_STATUS_PENDING,
                 UpdatedDate = DateTime.Now
-            };
-            await _uow.GetRepository<OrderTracking>().InsertAsync(orderTracking);
+            });
         }
 
         public async Task<MethodResult<IPaginate<OrderResponse>>> GetOrdersByUserAsync(int userId, PaginateRequest request, decimal? minAmount, decimal? maxAmount)

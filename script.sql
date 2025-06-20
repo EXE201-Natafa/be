@@ -22,6 +22,16 @@ CREATE TABLE refresh_token (
     FOREIGN KEY (user_id) REFERENCES `user`(user_id) ON DELETE CASCADE
 );
 
+CREATE TABLE shipping_address (
+    shipping_address_id INT AUTO_INCREMENT PRIMARY KEY,
+    full_name NVARCHAR(255) NOT NULL,
+    address VARCHAR(150) NOT NULL, 
+    phone_number VARCHAR(15) NOT NULL,
+    is_default BOOLEAN NOT NULL,
+    user_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES `user`(user_id)
+);
+
 CREATE TABLE category (
     category_id INT AUTO_INCREMENT PRIMARY KEY,
     category_name NVARCHAR(255) NOT NULL,
@@ -112,6 +122,7 @@ CREATE TABLE `order` (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     order_code VARCHAR(100), 
     total_amount DECIMAL(10,2) NOT NULL,
+    full_name NVARCHAR(255) NOT NULL,
     address NVARCHAR(150) NOT NULL, 
     phone_number NVARCHAR(10) NOT NULL,
     shipping_price DECIMAL(10,2) NOT NULL, 
@@ -422,10 +433,10 @@ INSERT INTO user_voucher (redeemed_date, status, user_id, voucher_id) VALUES
 
 
 -- Thêm 3 đơn hàng mới
-INSERT INTO `order` (order_code, total_amount, address, phone_number, shipping_price, user_id, voucher_id, payment_method_id) VALUES
-('ORD001', 1091000.00, '789 Manga Road, Kyoto', '0311222333', 50000.00, 3, NULL, 1),
-('ORD002', 828300.00, '321 Hero Blvd, Metropolis', '0499888777', 40000.00, 4, NULL, 2),
-('ORD003', 1068350.00, '159 Legend St, New York', '0311999888', 45000.00, 3, NULL, 1);
+INSERT INTO `order` (order_code, total_amount, full_name, address, phone_number, shipping_price, user_id, voucher_id, payment_method_id) VALUES
+('ORD001', 1091000.00, 'customer1', '789 Manga Road, Kyoto', '0311222333', 50000.00, 3, NULL, 1),
+('ORD002', 828300.00, 'customer2', '321 Hero Blvd, Metropolis', '0499888777', 40000.00, 4, NULL, 2),
+('ORD003', 1068350.00, 'customer1', '159 Legend St, New York', '0311999888', 45000.00, 3, NULL, 1);
 
 -- Order_detail cho 3 đơn hàng mới
 INSERT INTO order_detail (price, quantity, product_detail_id, order_id) VALUES
