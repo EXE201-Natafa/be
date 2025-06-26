@@ -7,7 +7,7 @@ env:
   
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "tan" ]
 
 jobs:
   build-and-deploy:
