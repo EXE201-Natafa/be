@@ -12,9 +12,9 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Natafa.API/Natafa.Api.csproj", "Natafa.API/"]
-COPY ["Natafa.Repository/Natafa.Repository.csproj", "Natafa.Repository/"]
-COPY ["Natafa.Domain/Natafa.Domain.csproj", "Natafa.Domain/"]
+COPY ["src/Natafa.API/Natafa.Api.csproj", "Natafa.API/"]
+COPY ["src/Natafa.Repository/Natafa.Repository.csproj", "Natafa.Repository/"]
+COPY ["src/Natafa.Domain/Natafa.Domain.csproj", "Natafa.Domain/"]
 RUN dotnet restore "./Natafa.API/Natafa.Api.csproj"
 COPY . .
 WORKDIR "/src/Natafa.API"
