@@ -13,8 +13,8 @@ services:
 
   be:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: src
+      dockerfile: Natafa.Api/Dockerfile
     container_name: natafa-be-container
     environment:
       ASPNETCORE_ENVIRONMENT: Development    
