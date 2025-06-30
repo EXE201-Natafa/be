@@ -5,10 +5,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Natafa.Api.Models;
-using Org.BouncyCastle.Asn1.Ocsp;
 
 namespace Natafa.Api.Controllers
 {
+    /// <summary>
+    /// Controller quản lý các giao dịch.
+    /// </summary>
     public class TransactionController : BaseApiController
     {
         private readonly ITransactionService _transactionService;
@@ -18,6 +20,13 @@ namespace Natafa.Api.Controllers
             _transactionService = transactionService;
         }
 
+        /// <summary>
+        /// Lấy tất cả giao dịch (chỉ dành cho Admin).
+        /// </summary>
+        /// <param name="request">Thông tin phân trang.</param>
+        /// <param name="minAmount">Số tiền tối thiểu.</param>
+        /// <param name="maxAmount">Số tiền tối đa.</param>
+        /// <returns>Danh sách giao dịch.</returns>
         [HttpGet]
         [Route(Router.TransactionRoute.GetAllTransactions)]
         [Authorize(Roles = UserConstant.USER_ROLE_ADMIN)]
@@ -29,6 +38,13 @@ namespace Natafa.Api.Controllers
                 Ok);
         }
 
+        /// <summary>
+        /// Lấy danh sách giao dịch của người dùng (chỉ dành cho khách hàng).
+        /// </summary>
+        /// <param name="request">Thông tin phân trang.</param>
+        /// <param name="minAmount">Số tiền tối thiểu.</param>
+        /// <param name="maxAmount">Số tiền tối đa.</param>
+        /// <returns>Danh sách giao dịch của người dùng.</returns>
         [HttpGet]
         [Route(Router.TransactionRoute.GetUserTransactions)]
         [Authorize(Roles = UserConstant.USER_ROLE_CUSTOMER)]
@@ -40,6 +56,12 @@ namespace Natafa.Api.Controllers
                 (l, c) => Problem(detail: l, statusCode: c),
                 Ok);
         }
+
+        /// <summary>
+        /// Lấy thông tin chi tiết giao dịch.
+        /// </summary>
+        /// <param name="id">ID của giao dịch.</param>
+        /// <returns>Thông tin giao dịch.</returns>
         [HttpGet]
         [Route(Router.TransactionRoute.GetTransaction)]
         public async Task<ActionResult> GetTransaction(int id)

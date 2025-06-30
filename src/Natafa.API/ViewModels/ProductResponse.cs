@@ -14,6 +14,14 @@
 
         public string? Image { get; set; }
 
+        public decimal Price { get; set; }
+
+        public decimal Discount { get; set; }
+
+        public int CategoryId { get; set; }
+
+        public float Rating { get; set; }
+
         public bool Status { get; set; }
 
         public CategoryResponse Category { get; set; } = null!;
@@ -28,6 +36,8 @@
         public string? Summary { get; set; }
 
         public string Material { get; set; } = null!;
+
+        public float Rating { get; set; }
 
         public int CategoryId { get; set; }
 
