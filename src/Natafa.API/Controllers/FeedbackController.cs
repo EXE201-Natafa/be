@@ -9,6 +9,9 @@ using Natafa.Api.Models;
 
 namespace Natafa.Api.Controllers
 {
+    /// <summary>
+    /// Controller xử lý các thao tác liên quan đến Feedback.
+    /// </summary>
     public class FeedbackController : BaseApiController
     {
         private readonly IFeedbackService _feedbackService;
@@ -18,6 +21,12 @@ namespace Natafa.Api.Controllers
             _feedbackService = feedbackService;
         }
 
+        /// <summary>
+        /// Tạo mới Feedback.
+        /// </summary>
+        /// <remarks>
+        /// Yêu cầu Role: Customer
+        /// </remarks>
         [HttpPost(FeedbackRoute.CreateFeedback)]
         [Authorize(Roles = UserConstant.USER_ROLE_CUSTOMER)]
         public async Task<IActionResult> CreateFeedback(FeedbackRequest request)
@@ -30,6 +39,12 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Lấy danh sách Feedback theo sản phẩm.
+        /// </summary>
+        /// <remarks>
+        /// Không yêu cầu Role.
+        /// </remarks>
         [HttpGet(FeedbackRoute.GetFeedbackByProduct)]
         public async Task<IActionResult> GetFeedbackByProduct(int productId, [FromQuery] PaginateRequest request, int? rating)
         {
@@ -40,8 +55,14 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Lấy tất cả Feedback.
+        /// </summary>
+        /// <remarks>
+        /// Yêu cầu Role: Staff hoặc Customer
+        /// </remarks>
         [HttpGet(FeedbackRoute.GetAllFeedbacks)]
-        [Authorize(Roles = $" {UserConstant.USER_ROLE_STAFF}, {UserConstant.USER_ROLE_CUSTOMER}")]
+        [Authorize(Roles = $"{UserConstant.USER_ROLE_STAFF}, {UserConstant.USER_ROLE_CUSTOMER}")]
         public async Task<IActionResult> GetAllFeedbacks([FromQuery] PaginateRequest request, int? rating)
         {
             var result = await _feedbackService.GetAllFeedbacksAsync(request, rating);
@@ -51,6 +72,12 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Cập nhật trạng thái Feedback.
+        /// </summary>
+        /// <remarks>
+        /// Yêu cầu Role: Staff
+        /// </remarks>
         [HttpPut(FeedbackRoute.GetUpdateDelete)]
         [Authorize(Roles = "Staff")]
         public async Task<IActionResult> UpdateFeedbackStatus(int id, [FromBody] UpdateFeedbackStatusRequest request)
@@ -62,6 +89,12 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Xóa Feedback.
+        /// </summary>
+        /// <remarks>
+        /// Yêu cầu Role: Bất kỳ Role nào được ủy quyền.
+        /// </remarks>
         [HttpDelete]
         [Route(FeedbackRoute.GetUpdateDelete)]
         [Authorize]
@@ -75,5 +108,4 @@ namespace Natafa.Api.Controllers
             );
         }
     }
-
 }

@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Natafa.Api.Controllers
 {
+    /// <summary>
+    /// Controller quản lý Dashboard, dành riêng cho Admin.
+    /// </summary>
     [Authorize(Roles = UserConstant.USER_ROLE_ADMIN)]
     public class DashboardController : BaseApiController
     {
@@ -19,6 +22,13 @@ namespace Natafa.Api.Controllers
             _dashboardService = dashboardService;
         }
 
+        /// <summary>
+        /// Lấy dữ liệu tổng quan Dashboard.
+        /// </summary>
+        /// <remarks>
+        /// Yêu cầu Role: Admin.
+        /// </remarks>
+        /// <returns>Dữ liệu tổng quan Dashboard.</returns>
         [HttpGet]
         [Route(Router.DashboardRoute.Dashboard)]
         public async Task<IActionResult> GetDashboard()
@@ -30,6 +40,13 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Lấy doanh thu theo tháng.
+        /// </summary>
+        /// <remarks>
+        /// Yêu cầu Role: Admin.
+        /// </remarks>
+        /// <returns>Dữ liệu doanh thu theo tháng.</returns>
         [HttpGet]
         [Route(Router.DashboardRoute.GetMonthlyRevenue)]
         public async Task<IActionResult> GetMonthlyRevenue()
@@ -38,6 +55,13 @@ namespace Natafa.Api.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Lấy doanh thu theo quý.
+        /// </summary>
+        /// <remarks>
+        /// Yêu cầu Role: Admin.
+        /// </remarks>
+        /// <returns>Dữ liệu doanh thu theo quý.</returns>
         [HttpGet]
         [Route(Router.DashboardRoute.GetQuarterlyRevenue)]
         public async Task<IActionResult> GetQuarterlyRevenue()
@@ -46,6 +70,13 @@ namespace Natafa.Api.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Lấy doanh thu theo năm.
+        /// </summary>
+        /// <remarks>
+        /// Yêu cầu Role: Admin.
+        /// </remarks>
+        /// <returns>Dữ liệu doanh thu theo năm.</returns>
         [HttpGet]
         [Route(Router.DashboardRoute.GetYearlyRevenue)]
         public async Task<IActionResult> GetYearlyRevenue()
@@ -54,6 +85,13 @@ namespace Natafa.Api.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Lấy tổng số feedback theo tháng.
+        /// </summary>
+        /// <remarks>
+        /// Yêu cầu Role: Admin.
+        /// </remarks>
+        /// <returns>Số lượng feedback theo tháng.</returns>
         [HttpGet]
         [Route(Router.DashboardRoute.GetMonthlyTotalFeedbacks)]
         public async Task<IActionResult> GetMonthlyTotalFeedbacks()
@@ -65,6 +103,13 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Lấy tổng số feedback theo quý.
+        /// </summary>
+        /// <remarks>
+        /// Yêu cầu Role: Admin.
+        /// </remarks>
+        /// <returns>Số lượng feedback theo quý.</returns>
         [HttpGet]
         [Route(Router.DashboardRoute.GetQuarterlyTotalFeedbacks)]
         public async Task<IActionResult> GetQuarterlyTotalFeedbacks()
@@ -76,6 +121,13 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Lấy tổng số feedback theo năm.
+        /// </summary>
+        /// <remarks>
+        /// Yêu cầu Role: Admin.
+        /// </remarks>
+        /// <returns>Số lượng feedback theo năm.</returns>
         [HttpGet]
         [Route(Router.DashboardRoute.GetYearlyTotalFeedbacks)]
         public async Task<IActionResult> GetYearlyTotalFeedbacks()

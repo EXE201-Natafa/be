@@ -169,7 +169,7 @@ namespace Natafa.Api.Services.Implements
 
         private Func<IQueryable<Feedback>, IOrderedQueryable<Feedback>> BuildOrderBy(string sortBy)
         {
-            if (string.IsNullOrEmpty(sortBy)) return null;
+            if (string.IsNullOrEmpty(sortBy)) return q => q.OrderByDescending(p => p.FeedbackId);
 
             return sortBy.ToLower() switch
             {

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace Natafa.Api.Models.ProductModel
 {
@@ -10,8 +11,8 @@ namespace Natafa.Api.Models.ProductModel
         public string? Material { get; set; } = null!;
         [Required]
         public int CategoryId { get; set; }
-        public bool IsUpdateImagePackage { get; set; }
-        public List<ProductDetailUpdateRequest> ProductDetails { get; set; } = new List<ProductDetailUpdateRequest>();
+        public bool IsUpdateImage { get; set; }
+        public List<ProductDetailUpdateRequest> ProductDetails { get; set; } = new List<ProductDetailUpdateRequest>();        
         public List<IFormFile> ProductImages { get; set; } = new List<IFormFile>();
     }
 

@@ -9,6 +9,9 @@ using static Natafa.Api.Routes.Router;
 
 namespace Natafa.Api.Controllers
 {
+    /// <summary>
+    /// Controller quản lý các API liên quan đến sản phẩm.
+    /// </summary>
     public class ProductController : BaseApiController
     {
         private readonly IProductService _productService;
@@ -18,6 +21,14 @@ namespace Natafa.Api.Controllers
             _productService = productService;
         }
 
+        /// <summary>
+        /// Lấy danh sách sản phẩm.
+        /// </summary>
+        /// <param name="request">Thông tin phân trang.</param>
+        /// <param name="categoryId">ID danh mục (tùy chọn).</param>
+        /// <param name="minPrice">Giá tối thiểu (tùy chọn).</param>
+        /// <param name="maxPrice">Giá tối đa (tùy chọn).</param>
+        /// <returns>Danh sách sản phẩm theo bộ lọc.</returns>
         [HttpGet]
         [Route(ProductRoute.GetProducts)]
         public async Task<ActionResult> GetProducts([FromQuery] PaginateRequest request, int? categoryId, decimal? minPrice, decimal? maxPrice)
@@ -29,6 +40,10 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Lấy danh sách sản phẩm bán chạy.
+        /// </summary>
+        /// <returns>Danh sách sản phẩm bán chạy.</returns>
         [HttpGet]
         [Route(ProductRoute.GetBestSellerProducts)]
         public async Task<ActionResult> GetBestSellerProducts()
@@ -40,6 +55,11 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Lấy chi tiết sản phẩm.
+        /// </summary>
+        /// <param name="id">ID sản phẩm.</param>
+        /// <returns>Thông tin chi tiết của sản phẩm.</returns>
         [HttpGet]
         [Route(ProductRoute.GetProductDetail)]
         public async Task<ActionResult> GetProductDetail(int id)
@@ -51,9 +71,17 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Tạo mới sản phẩm.
+        /// </summary>
+        /// <remarks>
+        /// Yêu cầu Role: Staff.
+        /// </remarks>
+        /// <param name="request">Thông tin sản phẩm cần tạo.</param>
+        /// <returns>Kết quả tạo sản phẩm.</returns>
         [HttpPost]
         [Route(ProductRoute.CreateProduct)]
-        [Authorize(Roles = UserConstant.USER_ROLE_ADMIN)]
+        [Authorize(Roles = UserConstant.USER_ROLE_STAFF)] 
         public async Task<ActionResult> CreateProduct([FromBody] ProductCreateRequest request)
         {
             var result = await _productService.CreateProductAsync(request);
@@ -63,9 +91,18 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Cập nhật thông tin sản phẩm.
+        /// </summary>
+        /// <remarks>
+        /// Yêu cầu Role: Staff.
+        /// </remarks>
+        /// <param name="id">ID sản phẩm cần cập nhật.</param>
+        /// <param name="request">Thông tin sản phẩm mới.</param>
+        /// <returns>Kết quả cập nhật sản phẩm.</returns>
         [HttpPut]
         [Route(ProductRoute.UpdateProduct)]
-        [Authorize(Roles = UserConstant.USER_ROLE_ADMIN)]
+        [Authorize(Roles = UserConstant.USER_ROLE_STAFF)] 
         public async Task<ActionResult> UpdateProduct(int id, [FromBody] ProductUpdateRequest request)
         {
             var result = await _productService.UpdateProductAsync(id, request);
@@ -75,10 +112,19 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Xóa sản phẩm.
+        /// </summary>
+        /// <remarks>
+        /// Yêu cầu Role: Staff.
+        /// </remarks>
+        /// <param name="id">ID sản phẩm cần xóa.</param>
+        /// <param name="ProductImages">Danh sách ảnh của sản phẩm.</param>
+        /// <returns>Kết quả xóa sản phẩm.</returns>
         [HttpDelete]
         [Route(ProductRoute.DeleteProduct)]
-        [Authorize(Roles = UserConstant.USER_ROLE_ADMIN)]
-        public async Task<ActionResult> DeleteProduct(int id)
+        [Authorize(Roles = UserConstant.USER_ROLE_STAFF)]
+        public async Task<ActionResult> DeleteProduct(int id, List<IFormFile> ProductImages)
         {
             var result = await _productService.DeleteProductAsync(id);
             return result.Match(

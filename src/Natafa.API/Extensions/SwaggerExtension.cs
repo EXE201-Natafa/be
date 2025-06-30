@@ -1,5 +1,6 @@
 ﻿using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 using System.Text.Json.Serialization;
 
 namespace Natafa.Api.Extensions
@@ -20,7 +21,7 @@ namespace Natafa.Api.Extensions
                     Scheme = "Bearer"
                 });
                 options.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
+                {   
                     {
                         new OpenApiSecurityScheme
                         {
@@ -39,6 +40,10 @@ namespace Natafa.Api.Extensions
                     Format = "date",
                     Example = new OpenApiString("2025-01-01")
                 });
+                // Enable XML Comments (for Swagger API Documentation)
+                var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFilename);
+                options.IncludeXmlComments(xmlPath);
             });
 
             return service;

@@ -76,7 +76,7 @@ namespace Natafa.Api.Services.Implements
 
         private Func<IQueryable<Transaction>, IOrderedQueryable<Transaction>> BuildOrderBy(string sortBy)
         {
-            if (string.IsNullOrEmpty(sortBy)) return null;
+            if (string.IsNullOrEmpty(sortBy)) return q => q.OrderByDescending(p => p.TransactionId);
 
             return sortBy.ToLower() switch
             {

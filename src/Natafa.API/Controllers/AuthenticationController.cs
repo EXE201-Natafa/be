@@ -2,11 +2,13 @@
 using Natafa.Api.Routes;
 using Natafa.Api.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Natafa.Api.Services.Implements;
 using static Natafa.Api.Routes.Router;
 
 namespace Natafa.Api.Controllers
 {
+    /// <summary>
+    /// Controller quản lý các thao tác xác thực và đăng nhập.
+    /// </summary>
     public class AuthenticationController : BaseApiController
     {
         private readonly IAuthenticationService _authenticationService;
@@ -19,6 +21,14 @@ namespace Natafa.Api.Controllers
             _refreshTokenService = refreshTokenService;
         }
 
+        /// <summary>
+        /// Đăng ký tài khoản mới.
+        /// </summary>
+        /// <remarks>
+        /// Không yêu cầu Role.
+        /// </remarks>
+        /// <param name="request">Thông tin đăng ký của người dùng.</param>
+        /// <returns>Kết quả đăng ký.</returns>
         [HttpPost]
         [Route(AtuthenticationRoute.Register)]
         public async Task<IActionResult> Register([FromBody] SignupRequest request)
@@ -30,6 +40,14 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Đăng nhập.
+        /// </summary>
+        /// <remarks>
+        /// Không yêu cầu Role.
+        /// </remarks>
+        /// <param name="request">Thông tin đăng nhập của người dùng.</param>
+        /// <returns>Token nếu đăng nhập thành công.</returns>
         [HttpPost]
         [Route(AtuthenticationRoute.Login)]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
@@ -41,6 +59,13 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Làm mới token.
+        /// </summary>
+        /// <remarks>
+        /// Yêu cầu token hợp lệ trong Authorization Header.
+        /// </remarks>
+        /// <returns>Token mới nếu thành công.</returns>
         [HttpPut]
         [Route(AtuthenticationRoute.RefreshToken)]
         public async Task<IActionResult> Refresh()
@@ -57,6 +82,14 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Xác minh email.
+        /// </summary>
+        /// <remarks>
+        /// Yêu cầu token xác minh được gửi qua email.
+        /// </remarks>
+        /// <param name="token">Token xác minh email.</param>
+        /// <returns>Kết quả xác minh email.</returns>
         [HttpPatch]
         [Route(AtuthenticationRoute.VerifyEmail)]
         public async Task<IActionResult> VerifyAccount(string token)

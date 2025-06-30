@@ -54,7 +54,9 @@ namespace Natafa.Api.Services.Implements
                     orderBy: BuildOrderBy(request.sortBy),
                     include: i => i.Include(x => x.ProductDetails)
                                    .Include(x => x.ProductImages)
-                                   .Include(x => x.Category),
+                                   .Include(x => x.Category)
+                                   .Include(x => x.Feedbacks),
+                                   
                     page: page,
                     size: size
                 );
@@ -73,9 +75,11 @@ namespace Natafa.Api.Services.Implements
                 var result = await _uow.GetRepository<Product>().GetListAsync<ProductResponse>(
 
                     selector: s => _mapper.Map<ProductResponse>(s),
+                    predicate: p => p.Status,
                     include: i => i.Include(x => x.ProductDetails).ThenInclude(x => x.OrderDetails)
                                    .Include(x => x.ProductImages)
-                                   .Include(x => x.Category),
+                                   .Include(x => x.Category)
+                                   .Include(x => x.Feedbacks),
                     orderBy: o => o.OrderByDescending(p => p.ProductDetails.Sum(pd => pd.OrderDetails.Sum(od => od.Quantity)))
                 );
                 return new MethodResult<IEnumerable<ProductResponse>>.Success(result.Take(NUMBER_BEST_SELLER_PRODUCT));
@@ -95,7 +99,8 @@ namespace Natafa.Api.Services.Implements
                     selector: s => _mapper.Map<ProductDetailResponse>(s),
                     include: i => i.Include(x => x.ProductDetails)
                                    .Include(x => x.ProductImages)
-                                   .Include(x => x.Category)                    
+                                   .Include(x => x.Category)
+                                   .Include(x => x.Feedbacks)
                 );
                 return new MethodResult<ProductDetailResponse>.Success(result);
             }
@@ -176,9 +181,9 @@ namespace Natafa.Api.Services.Implements
                 }
 
                 // Upload và quản lý hình ảnh
-                if (request.IsUpdateImagePackage)
+                if (request.IsUpdateImage)
                 {
-                    // Xóa ảnh cũ
+                    //Xóa ảnh cũ
                     foreach (var image in product.ProductImages.ToList())
                     {
                         _uow.GetRepository<ProductImage>().DeleteAsync(image);
@@ -203,7 +208,22 @@ namespace Natafa.Api.Services.Implements
                     }
                 }
 
-                _mapper.Map(request, product);
+                // Xóa các ProductDetails không có trong request
+                //var existingDetailIds = product.ProductDetails.Select(d => d.ProductDetailId).ToList();
+                //var requestDetailIds = request.ProductDetails.Select(d => d.ProductDetailId).ToList();
+
+                //var detailsToRemove = product.ProductDetails
+                //    .Where(d => !requestDetailIds.Contains(d.ProductDetailId))
+                //    .ToList();
+
+                //foreach (var detail in detailsToRemove)
+                //{
+                //    _uow.GetRepository<ProductDetail>().DeleteAsync(detail);
+                //}
+
+                //_mapper.Map(request, product);
+                product.ProductDetails.Clear(); // Xóa tất cả ProductDetails hiện tại
+
                 _uow.GetRepository<Product>().UpdateAsync(product);
 
                 await _uow.CommitAsync();

@@ -89,7 +89,7 @@ namespace Natafa.Api.Services.Implements
 
         private Func<IQueryable<Voucher>, IOrderedQueryable<Voucher>> BuildOrderBy(string sortBy)
         {
-            if (string.IsNullOrEmpty(sortBy)) return null;
+            if (string.IsNullOrEmpty(sortBy)) return q => q.OrderByDescending(p => p.VoucherId);
 
             return sortBy.ToLower() switch
             {

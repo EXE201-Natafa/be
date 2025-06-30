@@ -2,7 +2,6 @@
 using Natafa.Api.Models.AuthenticationModel;
 using Natafa.Api.Models.UserModel;
 using Natafa.Api.Routes;
-using Natafa.Api.Services.Implements;
 using Natafa.Api.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +11,9 @@ using Natafa.Api.Models;
 
 namespace Natafa.Api.Controllers
 {
+    /// <summary>
+    /// Controller quản lý người dùng.
+    /// </summary>
     public class UserController : BaseApiController
     {
         private readonly IUserService _userService;
@@ -21,6 +23,10 @@ namespace Natafa.Api.Controllers
             _userService = userService;
         }
 
+        /// <summary>
+        /// Lấy thông tin hồ sơ người dùng.
+        /// </summary>
+        /// <returns>Thông tin hồ sơ người dùng.</returns>
         [HttpGet]
         [Route(UserRoute.GetUpdateDeleteProfile)]
         public async Task<IActionResult> GetProfile()
@@ -35,6 +41,11 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Lấy danh sách tất cả người dùng (chỉ dành cho Admin).
+        /// </summary>
+        /// <param name="request">Thông tin phân trang.</param>
+        /// <returns>Danh sách người dùng.</returns>
         [HttpGet]
         [Route(UserRoute.Users)]
         [Authorize(Roles = UserConstant.USER_ROLE_ADMIN)]
@@ -47,6 +58,12 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Lấy danh sách người dùng theo ID voucher (chỉ dành cho Admin).
+        /// </summary>
+        /// <param name="voucherId">ID của voucher.</param>
+        /// <param name="request">Thông tin phân trang.</param>
+        /// <returns>Danh sách người dùng theo voucher.</returns>
         [HttpGet]
         [Route(UserRoute.GetUsersByVoucherId)]
         [Authorize(Roles = UserConstant.USER_ROLE_ADMIN)]
@@ -59,6 +76,11 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Cập nhật hồ sơ người dùng (dành cho khách hàng).
+        /// </summary>
+        /// <param name="request">Thông tin cần cập nhật.</param>
+        /// <returns>Kết quả cập nhật.</returns>
         [HttpPatch]
         [Route(UserRoute.GetUpdateDeleteProfile)]
         [Authorize(Roles = UserConstant.USER_ROLE_CUSTOMER)]
@@ -74,6 +96,11 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Tạo mới một người dùng (dành cho Admin và Staff).
+        /// </summary>
+        /// <param name="request">Thông tin người dùng.</param>
+        /// <returns>Kết quả tạo mới.</returns>
         [HttpPost]
         [Route(UserRoute.CreateUser)]
         [Authorize(Roles = UserConstant.USER_ROLE_ADMIN + "," + UserConstant.USER_ROLE_STAFF)]
@@ -86,9 +113,12 @@ namespace Natafa.Api.Controllers
             );
         }
 
-
-
-        // Cập nhật thông tin user
+        /// <summary>
+        /// Cập nhật thông tin người dùng (dành cho Admin và Staff).
+        /// </summary>
+        /// <param name="id">ID của người dùng.</param>
+        /// <param name="request">Thông tin cần cập nhật.</param>
+        /// <returns>Kết quả cập nhật.</returns>
         [HttpPut]
         [Route(UserRoute.GetUpdateDelete)]
         [Authorize(Roles = UserConstant.USER_ROLE_ADMIN + "," + UserConstant.USER_ROLE_STAFF)]
@@ -101,7 +131,12 @@ namespace Natafa.Api.Controllers
             );
         }
 
-        // Cập nhật trạng thái user
+        /// <summary>
+        /// Cập nhật trạng thái của người dùng (chỉ dành cho Admin).
+        /// </summary>
+        /// <param name="id">ID của người dùng.</param>
+        /// <param name="request">Trạng thái cần cập nhật.</param>
+        /// <returns>Kết quả cập nhật.</returns>
         [HttpPatch]
         [Route(UserRoute.UpdateUserStatus)]
         [Authorize(Roles = UserConstant.USER_ROLE_ADMIN)]

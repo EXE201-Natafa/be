@@ -11,6 +11,9 @@ using Natafa.Api.Models;
 
 namespace Natafa.Api.Controllers
 {
+    /// <summary>
+    /// Controller quản lý voucher.
+    /// </summary>
     public class VoucherController : BaseApiController
     {
         private readonly IVoucherService _voucherService;
@@ -20,7 +23,11 @@ namespace Natafa.Api.Controllers
             _voucherService = voucherService;
         }
 
-        // Lấy thông tin voucher theo ID
+        /// <summary>
+        /// Lấy thông tin voucher theo ID.
+        /// </summary>
+        /// <param name="id">ID của voucher.</param>
+        /// <returns>Thông tin chi tiết của voucher.</returns>
         [HttpGet]
         [Route(VoucherRoute.GetUpdateDelete)]
         public async Task<IActionResult> GetVoucherById(int id)
@@ -32,7 +39,11 @@ namespace Natafa.Api.Controllers
             );
         }
 
-        // Lấy danh sách tất cả các voucher
+        /// <summary>
+        /// Lấy danh sách tất cả các voucher.
+        /// </summary>
+        /// <param name="request">Thông tin phân trang.</param>
+        /// <returns>Danh sách voucher.</returns>
         [HttpGet]
         [Route(VoucherRoute.GetVouchers)]
         public async Task<IActionResult> GetAllVouchers([FromQuery] PaginateRequest request)
@@ -44,6 +55,11 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Lấy danh sách voucher của người dùng hiện tại (khách hàng).
+        /// </summary>
+        /// <param name="request">Thông tin phân trang.</param>
+        /// <returns>Danh sách voucher.</returns>
         [HttpGet]
         [Route(VoucherRoute.GetMyVouchers)]
         [Authorize(Roles = UserConstant.USER_ROLE_CUSTOMER)]
@@ -57,8 +73,15 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Lấy danh sách voucher theo ID người dùng (dành cho Staff).
+        /// </summary>
+        /// <param name="userId">ID người dùng.</param>
+        /// <param name="request">Thông tin phân trang.</param>
+        /// <returns>Danh sách voucher của người dùng.</returns>
         [HttpGet]
         [Route(VoucherRoute.GetVouchersByUserId)]
+        [Authorize(Roles = UserConstant.USER_ROLE_STAFF)]
         public async Task<IActionResult> GetVouchersByUserId(int userId, [FromQuery] PaginateRequest request)
         {
             var result = await _voucherService.GetVouchersByUserIdAsync(userId, request);
@@ -68,9 +91,14 @@ namespace Natafa.Api.Controllers
             );
         }
 
-        // Tạo mới một voucher
+        /// <summary>
+        /// Tạo mới một voucher (dành cho Staff).
+        /// </summary>
+        /// <param name="request">Thông tin voucher cần tạo.</param>
+        /// <returns>Kết quả tạo mới voucher.</returns>
         [HttpPost]
         [Route(VoucherRoute.CreateVoucher)]
+        [Authorize(Roles = UserConstant.USER_ROLE_STAFF)]
         public async Task<IActionResult> CreateVoucher([FromBody] VoucherRequest request)
         {
             var result = await _voucherService.CreateVoucherAsync(request);
@@ -80,9 +108,15 @@ namespace Natafa.Api.Controllers
             );
         }
 
-        // Cập nhật thông tin voucher
+        /// <summary>
+        /// Cập nhật thông tin voucher (dành cho Staff).
+        /// </summary>
+        /// <param name="id">ID voucher.</param>
+        /// <param name="request">Thông tin cần cập nhật.</param>
+        /// <returns>Kết quả cập nhật.</returns>
         [HttpPut]
         [Route(VoucherRoute.GetUpdateDelete)]
+        [Authorize(Roles = UserConstant.USER_ROLE_STAFF)]
         public async Task<IActionResult> UpdateVoucher(int id, [FromBody] VoucherRequest request)
         {
             var result = await _voucherService.UpdateVoucherAsync(id, request);
@@ -92,9 +126,14 @@ namespace Natafa.Api.Controllers
             );
         }
 
-        // Xóa một voucher
+        /// <summary>
+        /// Xóa một voucher (dành cho Staff).
+        /// </summary>
+        /// <param name="id">ID voucher cần xóa.</param>
+        /// <returns>Kết quả xóa.</returns>
         [HttpDelete]
         [Route(VoucherRoute.GetUpdateDelete)]
+        [Authorize(Roles = UserConstant.USER_ROLE_STAFF)]
         public async Task<IActionResult> DeleteVoucher(int id)
         {
             var result = await _voucherService.DeleteVoucherAsync(id);
@@ -104,9 +143,13 @@ namespace Natafa.Api.Controllers
             );
         }
 
-        // Kiểm tra và cập nhật các voucher đã hết hạn
+        /// <summary>
+        /// Kiểm tra và cập nhật trạng thái voucher đã hết hạn (dành cho Staff).
+        /// </summary>
+        /// <returns>Kết quả kiểm tra và cập nhật.</returns>
         [HttpPatch]
         [Route(VoucherRoute.ExpiredVoucher)]
+        [Authorize(Roles = UserConstant.USER_ROLE_STAFF)]
         public async Task<IActionResult> CheckExpiredVouchers()
         {
             var result = await _voucherService.CheckExpiredVouchersAsync();
@@ -116,6 +159,11 @@ namespace Natafa.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// Khách hàng nhận voucher.
+        /// </summary>
+        /// <param name="id">ID của voucher cần nhận.</param>
+        /// <returns>Kết quả nhận voucher.</returns>
         [HttpPost]
         [Route(VoucherRoute.TakeVoucher)]
         [Authorize(Roles = UserConstant.USER_ROLE_CUSTOMER)]
@@ -129,6 +177,4 @@ namespace Natafa.Api.Controllers
             );
         }
     }
-
-
 }

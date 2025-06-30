@@ -6,6 +6,8 @@ public class Paginate<TResult> : IPaginate<TResult>
     public int Page { get; set; }
     public int Total { get; set; }
     public int TotalPages { get; set; }
+    public bool HasPreviousPage => Page > 1;
+    public bool HasNextPage => Page < TotalPages;
     public IList<TResult> Items { get; set; }
 
     public Paginate(IEnumerable<TResult> source, int page, int size, int firstPage)

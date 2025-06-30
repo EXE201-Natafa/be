@@ -330,6 +330,7 @@ public partial class NatafaDbContext : DbContext
 
             entity.HasOne(d => d.Product).WithMany(p => p.ProductDetails)
                 .HasForeignKey(d => d.ProductId)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("product_detail_ibfk_1");
         });
 
