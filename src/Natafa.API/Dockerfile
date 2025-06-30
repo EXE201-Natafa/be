@@ -16,7 +16,7 @@ COPY ["src/Natafa.API/Natafa.Api.csproj", "Natafa.API/"]
 COPY ["src/Natafa.Repository/Natafa.Repository.csproj", "Natafa.Repository/"]
 COPY ["src/Natafa.Domain/Natafa.Domain.csproj", "Natafa.Domain/"]
 RUN dotnet restore "./Natafa.API/Natafa.Api.csproj"
-COPY . .
+COPY ./src .
 WORKDIR "/src/Natafa.API"
 RUN dotnet build "./Natafa.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
