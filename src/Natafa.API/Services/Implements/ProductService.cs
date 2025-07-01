@@ -102,6 +102,11 @@ namespace Natafa.Api.Services.Implements
                                    .Include(x => x.Category)
                                    .Include(x => x.Feedbacks)
                 );
+
+                if (result == null)
+                {
+                    return new MethodResult<ProductDetailResponse>.Failure("Product not found", StatusCodes.Status404NotFound);
+                }
                 return new MethodResult<ProductDetailResponse>.Success(result);
             }
             catch (Exception ex)
@@ -208,21 +213,20 @@ namespace Natafa.Api.Services.Implements
                     }
                 }
 
-                // Xóa các ProductDetails không có trong request
-                //var existingDetailIds = product.ProductDetails.Select(d => d.ProductDetailId).ToList();
-                //var requestDetailIds = request.ProductDetails.Select(d => d.ProductDetailId).ToList();
+                //Xóa các ProductDetails không có trong request
+               var existingDetailIds = product.ProductDetails.Select(d => d.ProductDetailId).ToList();
+                var requestDetailIds = request.ProductDetails.Select(d => d.ProductDetailId).ToList();
 
-                //var detailsToRemove = product.ProductDetails
-                //    .Where(d => !requestDetailIds.Contains(d.ProductDetailId))
-                //    .ToList();
+                var detailsToRemove = product.ProductDetails
+                    .Where(d => !requestDetailIds.Contains(d.ProductDetailId))
+                    .ToList();
 
-                //foreach (var detail in detailsToRemove)
-                //{
-                //    _uow.GetRepository<ProductDetail>().DeleteAsync(detail);
-                //}
+                foreach (var detail in detailsToRemove)
+                {
+                    _uow.GetRepository<ProductDetail>().DeleteAsync(detail);
+                }
 
-                //_mapper.Map(request, product);
-                product.ProductDetails.Clear(); // Xóa tất cả ProductDetails hiện tại
+                _mapper.Map(request, product);
 
                 _uow.GetRepository<Product>().UpdateAsync(product);
 
