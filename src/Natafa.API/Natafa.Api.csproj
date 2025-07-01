@@ -8,6 +8,7 @@
     <UserSecretsId>adc7db3f-0c2d-4989-b8dd-f2c091121df9</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<NoWarn>CS1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

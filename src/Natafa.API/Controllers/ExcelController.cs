@@ -33,6 +33,7 @@ namespace Natafa.Api.Controllers
         [Route(Router.ExcelRoute.GetMonthlyRevenueExcel)]
         public async Task<IActionResult> ExportMonthlyRevenueExcel()
         {
+            ExcelPackage.License.SetNonCommercialPersonal("Tan");
             var stream = new MemoryStream();
             using (var package = new ExcelPackage())
             {
@@ -78,6 +79,7 @@ namespace Natafa.Api.Controllers
         [Route(Router.ExcelRoute.GetQuarterlyRevenueExcel)]
         public async Task<IActionResult> ExportQuarterlyRevenueExcel()
         {
+            ExcelPackage.License.SetNonCommercialPersonal("Tan");
             var stream = new MemoryStream();
             using (var package = new ExcelPackage())
             {
@@ -123,6 +125,7 @@ namespace Natafa.Api.Controllers
         [Route(Router.ExcelRoute.GetYearlyRevenueExcel)]
         public async Task<IActionResult> ExportYearlyRevenueExcel()
         {
+            ExcelPackage.License.SetNonCommercialPersonal("Tan");
             var stream = new MemoryStream();
             using (var package = new ExcelPackage())
             {

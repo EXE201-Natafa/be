@@ -27,7 +27,7 @@ namespace Natafa.Api.Extensions
             service.AddTransient<IProductService, ProductService>();
             service.AddTransient<IOrderService, OrderService>();
             service.AddTransient<IShippingService, ShippingService>();
-            //service.AddTransient<IPaymentService, PaymentService>();
+            service.AddTransient<IPaymentService, PaymentService>();
             service.AddTransient<IExcelService, ExcelService>();
             service.AddTransient<ICloudinaryService, CloudinaryService>();
             service.AddTransient<ICategoryService, CategoryService>();

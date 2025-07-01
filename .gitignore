@@ -31,3 +31,6 @@ bld/
 msbuild.log
 msbuild.err
 msbuild.wrn
+
+# Deployment folders
+/publish/
