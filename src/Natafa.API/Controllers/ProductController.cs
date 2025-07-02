@@ -82,7 +82,7 @@ namespace Natafa.Api.Controllers
         [HttpPost]
         [Route(ProductRoute.CreateProduct)]
         [Authorize(Roles = UserConstant.USER_ROLE_STAFF)] 
-        public async Task<ActionResult> CreateProduct([FromBody] ProductCreateRequest request)
+        public async Task<ActionResult> CreateProduct(ProductCreateRequest request)
         {
             var result = await _productService.CreateProductAsync(request);
             return result.Match(
@@ -103,7 +103,7 @@ namespace Natafa.Api.Controllers
         [HttpPut]
         [Route(ProductRoute.UpdateProduct)]
         [Authorize(Roles = UserConstant.USER_ROLE_STAFF)] 
-        public async Task<ActionResult> UpdateProduct(int id, [FromBody] ProductUpdateRequest request)
+        public async Task<ActionResult> UpdateProduct(int id, ProductUpdateRequest request)
         {
             var result = await _productService.UpdateProductAsync(id, request);
             return result.Match(
