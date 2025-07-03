@@ -69,7 +69,7 @@ namespace Natafa.Api.Controllers
         [HttpPost]
         [Route(CategoryRoute.CreateCategory)]
         [Authorize(Roles = UserConstant.USER_ROLE_STAFF)]
-        public async Task<ActionResult> CreateCategory([FromBody] CategoryCreateRequest request)
+        public async Task<ActionResult> CreateCategory(CategoryCreateRequest request)
         {
             var result = await _categoryService.CreateCategoryAsync(request);
             return result.Match(
@@ -90,7 +90,7 @@ namespace Natafa.Api.Controllers
         [HttpPut]
         [Route(CategoryRoute.UpdateCategory)]
         [Authorize(Roles = UserConstant.USER_ROLE_STAFF)]
-        public async Task<ActionResult> UpdateCategory(int id, [FromBody] CategoryUpdateRequest request)
+        public async Task<ActionResult> UpdateCategory(int id, CategoryUpdateRequest request)
         {
             var result = await _categoryService.UpdateCategoryAsync(id, request);
             return result.Match(
