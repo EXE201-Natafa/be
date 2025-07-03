@@ -22,7 +22,7 @@ namespace Natafa.Api.Routes
             public const string GetUpdateDelete = $"{Users}/{Id}";
             public const string GetUpdateDeleteProfile = $"{Users}/profile";
             public const string CreateUser = $"{Users}"; 
-            public const string UpdateUserStatus = $"{Users}/status/" + "{" + nameof(Id) + "}"; // Cập nhật trạng thái user
+            public const string UpdateUserStatus = $"{Users}/status/{Id}"; // Cập nhật trạng thái user
             public const string GetUsersByVoucherId = $"{Users}/" + "{" + "voucherId" + "}";
         }
 
