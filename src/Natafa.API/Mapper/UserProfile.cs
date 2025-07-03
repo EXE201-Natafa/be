@@ -21,6 +21,7 @@ namespace Natafa.Api.Mapper
             CreateMap<User, ProfileResponse>();
             CreateMap<UpdateProfileRequest, User>();
             CreateMap<User, UserResponse>();
+            CreateMap<UserRequest, User>();
         }
     }
 }
