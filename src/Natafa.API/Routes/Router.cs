@@ -99,7 +99,7 @@ namespace Natafa.Api.Routes
             public const string GetUpdateDelete = $"{Vouchers}/{Id}"; 
             public const string GetVouchers = $"{Vouchers}";
             public const string GetMyVouchers = $"{Vouchers}/me";
-            public const string GetVouchersByUserId = $"{Vouchers}/" +"{" + "userId" + "}";
+            public const string GetVouchersByUserId = $"{Vouchers}/staff/" +"{" + "userId" + "}";
             public const string CreateVoucher = $"{Vouchers}"; 
             public const string ExpiredVoucher = $"{Vouchers}/expired-vouchers";
             public const string TakeVoucher = $"{Vouchers}/{Id}/take";
