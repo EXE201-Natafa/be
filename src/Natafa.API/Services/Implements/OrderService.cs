@@ -14,6 +14,7 @@ using System.Linq.Expressions;
 using System.Reflection.Metadata;
 using System.Security.Claims;
 using Natafa.Api.Models;
+using CloudinaryDotNet.Actions;
 
 namespace Natafa.Api.Services.Implements
 {
@@ -401,9 +402,20 @@ namespace Natafa.Api.Services.Implements
                     predicate: p => p.OrderId == orderId,
                     orderBy: o => o.OrderByDescending(x => x.UpdatedDate)
                 );
-                if (orderStatusCurrent.Status != OrderConstant.ORDER_STATUS_PAID)
+
+                if (order.PaymentMethodId == 1)
                 {
-                    return new MethodResult<string>.Failure($"Order status is {orderStatusCurrent.Status}", StatusCodes.Status400BadRequest);
+                    if (orderStatusCurrent.Status != OrderConstant.ORDER_STATUS_PENDING)
+                    {
+                        return new MethodResult<string>.Failure($"Order status is {orderStatusCurrent.Status}", StatusCodes.Status400BadRequest);
+                    }
+                }
+                else
+                {
+                    if (orderStatusCurrent.Status != OrderConstant.ORDER_STATUS_PAID)
+                    {
+                        return new MethodResult<string>.Failure($"Order status is {orderStatusCurrent.Status}. Order owner has not make payment", StatusCodes.Status400BadRequest);
+                    }
                 }
 
                 var orderTracking = new OrderTracking
@@ -421,6 +433,75 @@ namespace Natafa.Api.Services.Implements
             catch (Exception e)
             {
                 return new MethodResult<string>.Failure(e.ToString(), StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        public async Task<MethodResult<string>> ReturnOrderAsync(string role, int userId, int orderId)
+        {
+            try
+            {
+                var order = await _uow.GetRepository<Order>().SingleOrDefaultAsync(
+                    predicate: p => p.OrderId == orderId,
+                    include: i => i.Include(x => x.OrderDetails).ThenInclude(x => x.ProductDetail)
+                );
+                if (order == null)
+                {
+                    return new MethodResult<string>.Failure("Order not found", StatusCodes.Status404NotFound);
+                }
+
+                var orderStatusCurrent = await _uow.GetRepository<OrderTracking>().SingleOrDefaultAsync(
+                    predicate: p => p.OrderId == orderId,
+                    orderBy: o => o.OrderByDescending(x => x.UpdatedDate)
+                );
+
+                if (role == UserConstant.USER_ROLE_CUSTOMER)
+                {
+                    if (order.UserId != userId)
+                    {
+                        return new MethodResult<string>.Failure($"You do not own this order", StatusCodes.Status403Forbidden);
+                    }
+                }
+                
+                if (orderStatusCurrent.Status != OrderConstant.ORDER_STATUS_SHIPPING)
+                {
+                    return new MethodResult<string>.Failure($"Order status is {orderStatusCurrent.Status}. You can not return order", StatusCodes.Status400BadRequest);
+                }
+                               
+                await HandleReturnOrderAsync(order);
+                await _uow.CommitAsync();
+
+                return new MethodResult<string>.Success("Return order successfully");
+            }
+            catch (Exception e)
+            {
+                return new MethodResult<string>.Failure(e.ToString(), StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        private async Task HandleReturnOrderAsync(Order order)
+        {
+            try
+            {
+                foreach (var detail in order.OrderDetails)
+                {
+                    var productDetail = await _uow.GetRepository<ProductDetail>().SingleOrDefaultAsync(
+                        predicate: p => p.ProductDetailId == detail.ProductDetailId
+                    );
+                    productDetail.Quantity += detail.Quantity;
+                }
+
+                var orderTracking = new OrderTracking
+                {
+                    OrderId = order.OrderId,
+                    UpdatedDate = DateTime.Now,
+                    Status = OrderConstant.ORDER_STATUS_RETURNED,
+                };
+
+                await _uow.GetRepository<OrderTracking>().InsertAsync(orderTracking);
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
 

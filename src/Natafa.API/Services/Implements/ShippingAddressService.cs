@@ -109,7 +109,7 @@ namespace Natafa.Api.Services.Implements
                 if (request.IsDefault == true)
                 {
                     var shipAddDefault = await _uow.GetRepository<ShippingAddress>().SingleOrDefaultAsync(
-                        predicate: p => p.UserId == userId && p.IsDefault == true
+                        predicate: p => p.UserId == userId && p.IsDefault == true && p.ShippingAddressId != shipAddId
                     );
                     if (shipAddDefault != null)
                     {

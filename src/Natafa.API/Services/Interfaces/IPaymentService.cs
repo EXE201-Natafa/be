@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Natafa.Api.ViewModels;
 
 namespace Natafa.Api.Services.Interfaces
 {
@@ -16,5 +17,6 @@ namespace Natafa.Api.Services.Interfaces
         Task<MethodResult<string>> CreatePaymentAsync(string email, int orderId, HttpContext httpContext);
         Task<string> ProcessResponseAsync(VnPaymentResponseModel response);
         string GetRedirectUrl();
+        Task<MethodResult<IEnumerable<PaymentMethodResponse>>> GetPaymentMethodAsync();
     }
-}
+}   

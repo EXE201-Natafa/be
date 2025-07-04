@@ -16,6 +16,8 @@ using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Natafa.Api.ViewModels;
+using AutoMapper;
 
 namespace Natafa.Api.Services.Implements
 {
@@ -23,11 +25,13 @@ namespace Natafa.Api.Services.Implements
     {
         private readonly VnPayConfig _config;
         private readonly IUnitOfWork _uow;
+        private readonly IMapper _mapper;
 
-        public PaymentService(IOptions<VnPayConfig> options, IUnitOfWork uow)
+        public PaymentService(IOptions<VnPayConfig> options, IUnitOfWork uow, IMapper mapper)
         {
             _config = options.Value;
             _uow = uow;
+            _mapper = mapper;
         }
 
         public async Task<MethodResult<string>> CreatePaymentAsync(string email, int orderId, HttpContext httpContext)
@@ -54,7 +58,7 @@ namespace Natafa.Api.Services.Implements
             {
                 return new MethodResult<string>.Failure($"Order Status is {orderStatus}", 400);
             }
-                        
+
             var vnpayModel = new VnPaymentRequestModel
             {
                 Amount = order.TotalAmount,
@@ -62,7 +66,7 @@ namespace Natafa.Api.Services.Implements
                 CreatedDate = DateTime.Now
             };
 
-            return await CreatePaymentUrl(httpContext, vnpayModel);           
+            return await CreatePaymentUrl(httpContext, vnpayModel);
         }
 
         private async Task<MethodResult<string>> CreatePaymentUrl(HttpContext context, VnPaymentRequestModel model)
@@ -78,8 +82,8 @@ namespace Natafa.Api.Services.Implements
             vnpay.AddRequestData("vnp_CreateDate", model.CreatedDate.ToString("yyyyMMddHHmmss"));
             vnpay.AddRequestData("vnp_CurrCode", _config.CurrCode);
             vnpay.AddRequestData("vnp_IpAddr", Utils.GetIpAddress(context));
-            vnpay.AddRequestData("vnp_Locale", _config.Locale);           
-            vnpay.AddRequestData("vnp_OrderInfo", $"Thanh toán chuyển khoản cho Order có ID {model.OrderId} với số tiền {model.Amount}");            
+            vnpay.AddRequestData("vnp_Locale", _config.Locale);
+            vnpay.AddRequestData("vnp_OrderInfo", $"Thanh toán chuyển khoản cho Order có ID {model.OrderId} với số tiền {model.Amount}");
             vnpay.AddRequestData("vnp_OrderType", "other"); //default value: other
             vnpay.AddRequestData("vnp_ReturnUrl", _config.ReturnUrl);
             vnpay.AddRequestData("vnp_TxnRef", tick); // Mã tham chiếu của giao dịch tại hệ thống của merchant.Mã này là duy nhất dùng để phân biệt các đơn hàng gửi sang VNPAY.Không được trùng lặp trong ngày    
@@ -155,14 +159,14 @@ namespace Natafa.Api.Services.Implements
                 else
                 {
                     type = "success";
-                    
+
                     var order = await _uow.GetRepository<Order>().SingleOrDefaultAsync(
                         predicate: p => p.OrderId == response.OrderId
                     );
                     await CreateOrderStatusAsync(order);
                     var transactionId = await CreateTransactionAsync(order, response);
 
-                    message = $"{transactionId}";                   
+                    message = $"{transactionId}";
                 }
 
                 return $"payment-result?type={type}&message={message}";
@@ -191,7 +195,7 @@ namespace Natafa.Api.Services.Implements
             {
                 Amount = order.TotalAmount,
                 CreatedDate = DateTime.Now,
-                OrderId = order.OrderId,               
+                OrderId = order.OrderId,
                 Description = response.OrderDescription
             };
 
@@ -204,5 +208,14 @@ namespace Natafa.Api.Services.Implements
         {
             return _config.RedirectUrl;
         }
+
+        public async Task<MethodResult<IEnumerable<PaymentMethodResponse>>> GetPaymentMethodAsync()
+        {
+            var result = await _uow.GetRepository<PaymentMethod>().GetListAsync(
+                    selector: s => _mapper.Map<PaymentMethodResponse>(s)
+                );
+            return new MethodResult<IEnumerable<PaymentMethodResponse>>.Success(result);
+        }
     }
 }
+    

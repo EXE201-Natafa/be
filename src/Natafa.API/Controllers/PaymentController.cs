@@ -69,5 +69,20 @@ namespace Natafa.Api.Controllers
             // Chuyển hướng đến trang kết quả thanh toán.
             return Redirect($"{redirectUrl}{result}");
         }
+
+        /// <summary>
+        /// Lấy các phương thức trả tiền.
+        /// </summary>
+        /// <returns>các phương thức trả tiền.</returns>
+        [HttpGet]
+        [Route(Router.PaymentRoute.GetPaymentMethod)]
+        public async Task<ActionResult> GetPaymentMethod()
+        {
+            var result = await _paymentService.GetPaymentMethodAsync();
+            return result.Match(
+                (l, c) => Problem(detail: l, statusCode: c),
+                Ok
+            );
+        }
     }
 }

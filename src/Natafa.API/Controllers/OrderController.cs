@@ -112,6 +112,29 @@ namespace Natafa.Api.Controllers
         }
 
         /// <summary>
+        /// trả đơn hàng.
+        /// </summary>
+        /// <remarks>
+        /// Yêu cầu Role: Customer hoặc Staff.
+        /// </remarks>
+        /// <param name="orderId">ID đơn hàng cần hủy.</param>
+        /// <returns>Kết quả trả đơn hàng.</returns>
+        [HttpPost]
+        [Route(OrderRoute.ReturnOrder)]
+        [Authorize(Roles = $"{UserConstant.USER_ROLE_CUSTOMER}, {UserConstant.USER_ROLE_STAFF}")]
+        public async Task<ActionResult> ReturnOrder(int orderId)
+        {
+            var role = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role).Value;
+            var userId = Int32.Parse(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Sid).Value);
+
+            var result = await _orderService.ReturnOrderAsync(role, userId, orderId);
+            return result.Match(
+                (l, c) => Problem(detail: l, statusCode: c),
+                Ok
+            );
+        }
+
+        /// <summary>
         /// Lấy danh sách đơn hàng của người dùng.
         /// </summary>
         /// <remarks>

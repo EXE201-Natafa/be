@@ -33,6 +33,7 @@ namespace Natafa.Api.Routes
             public const string ConfirmOrder = $"{Orders}/confirm";
             public const string CompleteOrder = $"{Orders}/complete";
             public const string CancelOrder = $"{Orders}/cancel";
+            public const string ReturnOrder = $"{Orders}/return";
             public const string GetUserOrder = $"{Orders}/me";
             public const string GetAllOrder = $"{Orders}";
             public const string GetShippingCost = $"{Orders}/shipping-cost";
@@ -44,6 +45,7 @@ namespace Natafa.Api.Routes
             public const string MakePayment = $"{Payment}/payment";
             public const string AddToWallet = $"{Payment}/wallet-payment";
             public const string PaymentCallBack = $"{Payment}/payment-call-back";
+            public const string GetPaymentMethod = $"{Payment}/payment-methods";
         }
 
         public static class ExcelRoute
