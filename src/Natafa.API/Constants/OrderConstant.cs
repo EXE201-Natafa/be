@@ -4,6 +4,7 @@
     {
         public const string ORDER_STATUS_PENDING = "Pending";
         public const string ORDER_STATUS_PAID = "Paid";
+        public const string ORDER_STATUS_DENIED = "Denied";
         public const string ORDER_STATUS_SHIPPING = "Shipping";
         public const string ORDER_STATUS_COMPLETED = "Completed";
         public const string ORDER_STATUS_CANCELED = "Canceled";

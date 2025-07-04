@@ -234,6 +234,97 @@ namespace Natafa.Api.Services.Implements
             };
         }
 
+
+        public async Task<MethodResult<string>> ConfirmOrderAsync(int orderId)
+        {
+            try
+            {
+                var order = await _uow.GetRepository<Order>().SingleOrDefaultAsync(
+                    predicate: p => p.OrderId == orderId
+                );
+                if (order == null)
+                {
+                    return new MethodResult<string>.Failure("Order not found", StatusCodes.Status404NotFound);
+                }
+
+                var orderStatusCurrent = await _uow.GetRepository<OrderTracking>().SingleOrDefaultAsync(
+                    predicate: p => p.OrderId == orderId,
+                    orderBy: o => o.OrderByDescending(x => x.UpdatedDate)
+                );
+
+                if (order.PaymentMethodId == 1)
+                {
+                    if (orderStatusCurrent.Status != OrderConstant.ORDER_STATUS_PENDING)
+                    {
+                        return new MethodResult<string>.Failure($"Order status is {orderStatusCurrent.Status}", StatusCodes.Status400BadRequest);
+                    }
+                }
+                else
+                {
+                    if (orderStatusCurrent.Status != OrderConstant.ORDER_STATUS_PAID)
+                    {
+                        return new MethodResult<string>.Failure($"Order status is {orderStatusCurrent.Status}. Order owner has not make payment", StatusCodes.Status400BadRequest);
+                    }
+                }
+
+                var orderTracking = new OrderTracking
+                {
+                    OrderId = orderId,
+                    UpdatedDate = DateTime.Now,
+                    Status = OrderConstant.ORDER_STATUS_SHIPPING,
+                };
+
+                await _uow.GetRepository<OrderTracking>().InsertAsync(orderTracking);
+                await _uow.CommitAsync();
+
+                return new MethodResult<string>.Success("Confirm order successfully");
+            }
+            catch (Exception e)
+            {
+                return new MethodResult<string>.Failure(e.ToString(), StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        public async Task<MethodResult<string>> DenyOrderAsync(int orderId)
+        {
+            try
+            {
+                var order = await _uow.GetRepository<Order>().SingleOrDefaultAsync(
+                    predicate: p => p.OrderId == orderId
+                );
+                if (order == null)
+                {
+                    return new MethodResult<string>.Failure("Order not found", StatusCodes.Status404NotFound);
+                }
+
+                var orderStatusCurrent = await _uow.GetRepository<OrderTracking>().SingleOrDefaultAsync(
+                    predicate: p => p.OrderId == orderId,
+                    orderBy: o => o.OrderByDescending(x => x.UpdatedDate)
+                );
+                
+                if (orderStatusCurrent.Status != OrderConstant.ORDER_STATUS_PENDING && orderStatusCurrent.Status != OrderConstant.ORDER_STATUS_PAID)
+                {
+                    return new MethodResult<string>.Failure($"Order status is {orderStatusCurrent.Status}", StatusCodes.Status400BadRequest);
+                }                
+
+                var orderTracking = new OrderTracking
+                {
+                    OrderId = orderId,
+                    UpdatedDate = DateTime.Now,
+                    Status = OrderConstant.ORDER_STATUS_DENIED
+                };
+
+                await _uow.GetRepository<OrderTracking>().InsertAsync(orderTracking);
+                await _uow.CommitAsync();
+
+                return new MethodResult<string>.Success("Deny order successfully");
+            }
+            catch (Exception e)
+            {
+                return new MethodResult<string>.Failure(e.ToString(), StatusCodes.Status500InternalServerError);
+            }
+        }
+
         public async Task<MethodResult<string>> CompleteOrderAsync(int userId, int orderId, string role)
         {
             try
@@ -383,56 +474,6 @@ namespace Natafa.Api.Services.Implements
             catch (Exception)
             {
                 throw;
-            }
-        }
-
-        public async Task<MethodResult<string>> ConfirmOrderAsync(int orderId)
-        {
-            try
-            {
-                var order = await _uow.GetRepository<Order>().SingleOrDefaultAsync(
-                    predicate: p => p.OrderId == orderId
-                );
-                if (order == null)
-                {
-                    return new MethodResult<string>.Failure("Order not found", StatusCodes.Status404NotFound);
-                }
-
-                var orderStatusCurrent = await _uow.GetRepository<OrderTracking>().SingleOrDefaultAsync(
-                    predicate: p => p.OrderId == orderId,
-                    orderBy: o => o.OrderByDescending(x => x.UpdatedDate)
-                );
-
-                if (order.PaymentMethodId == 1)
-                {
-                    if (orderStatusCurrent.Status != OrderConstant.ORDER_STATUS_PENDING)
-                    {
-                        return new MethodResult<string>.Failure($"Order status is {orderStatusCurrent.Status}", StatusCodes.Status400BadRequest);
-                    }
-                }
-                else
-                {
-                    if (orderStatusCurrent.Status != OrderConstant.ORDER_STATUS_PAID)
-                    {
-                        return new MethodResult<string>.Failure($"Order status is {orderStatusCurrent.Status}. Order owner has not make payment", StatusCodes.Status400BadRequest);
-                    }
-                }
-
-                var orderTracking = new OrderTracking
-                {
-                    OrderId = orderId,
-                    UpdatedDate = DateTime.Now,
-                    Status = OrderConstant.ORDER_STATUS_SHIPPING,
-                };
-
-                await _uow.GetRepository<OrderTracking>().InsertAsync(orderTracking);
-                await _uow.CommitAsync();
-
-                return new MethodResult<string>.Success("Confirm order successfully");
-            }
-            catch (Exception e)
-            {
-                return new MethodResult<string>.Failure(e.ToString(), StatusCodes.Status500InternalServerError);
             }
         }
 

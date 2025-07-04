@@ -67,6 +67,26 @@ namespace Natafa.Api.Controllers
         }
 
         /// <summary>
+        /// Từ chối đơn hàng.
+        /// </summary>
+        /// <remarks>
+        /// Yêu cầu Role: Staff.
+        /// </remarks>
+        /// <param name="orderId">ID đơn hàng cần từ chối.</param>
+        /// <returns>Kết quả từ chối đơn hàng.</returns>
+        [HttpPost]
+        [Route(OrderRoute.DenyOrder)]
+        [Authorize(Roles = UserConstant.USER_ROLE_STAFF)]
+        public async Task<ActionResult> DenyOrder(int orderId)
+        {
+            var result = await _orderService.DenyOrderAsync(orderId);
+            return result.Match(
+                (l, c) => Problem(detail: l, statusCode: c),
+                Ok
+            );
+        }
+
+        /// <summary>
         /// Hoàn thành đơn hàng.
         /// </summary>
         /// <remarks>
@@ -117,7 +137,7 @@ namespace Natafa.Api.Controllers
         /// <remarks>
         /// Yêu cầu Role: Customer hoặc Staff.
         /// </remarks>
-        /// <param name="orderId">ID đơn hàng cần hủy.</param>
+        /// <param name="orderId">ID đơn hàng cần trả.</param>
         /// <returns>Kết quả trả đơn hàng.</returns>
         [HttpPost]
         [Route(OrderRoute.ReturnOrder)]

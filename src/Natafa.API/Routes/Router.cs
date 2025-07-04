@@ -31,6 +31,7 @@ namespace Natafa.Api.Routes
             public const string Orders = $"{prefix}orders";
             public const string CreateOrder = $"{Orders}";
             public const string ConfirmOrder = $"{Orders}/confirm";
+            public const string DenyOrder = $"{Orders}/deny";
             public const string CompleteOrder = $"{Orders}/complete";
             public const string CancelOrder = $"{Orders}/cancel";
             public const string ReturnOrder = $"{Orders}/return";
