@@ -10,5 +10,6 @@ namespace Natafa.Api.Models.UserModel
         public DateOnly Birthday { get; set; }
         [Phone]
         public string? PhoneNumber { get; set; }
+        public IFormFile? Image { get; set; }
     }
 }

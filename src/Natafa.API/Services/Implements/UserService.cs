@@ -18,12 +18,14 @@ namespace Natafa.Api.Services.Implements
         private readonly IUnitOfWork _uow;
         private readonly IMapper _mapper;
         private readonly IEmailService _emailService;
+        private readonly ICloudinaryService _cloudinaryService;
 
-        public UserService(IUnitOfWork uow, IMapper mapper, IEmailService emailService)
+        public UserService(IUnitOfWork uow, IMapper mapper, IEmailService emailService, ICloudinaryService cloudinaryService)
         {
             _uow = uow;
             _mapper = mapper;
             _emailService = emailService;
+            _cloudinaryService = cloudinaryService;
         }
 
         public async Task<MethodResult<User>> GetByEmailAsync(string email)
@@ -53,8 +55,22 @@ namespace Natafa.Api.Services.Implements
             var user = await _uow.GetRepository<User>().SingleOrDefaultAsync(
                     predicate: p => p.Email == email
                 );
+            if (user == null)
+            {
+                return new MethodResult<string>.Failure("User not found", StatusCodes.Status404NotFound);
+            }
 
             _mapper.Map(request, user);
+            if (request.Image != null)
+            {
+                // Xử lý ảnh đại diện
+                var image = await _cloudinaryService.UploadImageAsync(request.Image);
+                if (image == null)
+                {
+                    return new MethodResult<string>.Failure("Failed to upload avatar", StatusCodes.Status500InternalServerError);
+                }
+                user.Image = image;
+            }
             _uow.GetRepository<User>().UpdateAsync(user);
             _uow.Commit();
             return new MethodResult<string>.Success("Update profile successfully");
