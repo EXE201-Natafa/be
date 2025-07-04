@@ -21,10 +21,12 @@ namespace Natafa.Api.Mapper
                 .ForMember(dest => dest.Images, opt => opt.MapFrom(src => src.ProductImages.Select(f => f.Url)))
                 .ForMember(dest => dest.Rating, opt => opt.MapFrom(src => src.Feedbacks.Any() ? src.Feedbacks.Average(x => x.Rating) : 0));
 
-            CreateMap<ProductCreateRequest, Product>();
+            CreateMap<ProductCreateRequest, Product>()
+                .ForMember(dest => dest.ProductImages, opt => opt.Ignore());
             CreateMap<ProductDetailCreateRequest, ProductDetail>();
 
-            CreateMap<ProductUpdateRequest, Product>();
+            CreateMap<ProductUpdateRequest, Product>()
+                .ForMember(dest => dest.ProductImages, opt => opt.Ignore());
             CreateMap<ProductDetailUpdateRequest, ProductDetail>();
         }      
     }
