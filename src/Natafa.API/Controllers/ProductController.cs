@@ -119,12 +119,11 @@ namespace Natafa.Api.Controllers
         /// Yêu cầu Role: Staff.
         /// </remarks>
         /// <param name="id">ID sản phẩm cần xóa.</param>
-        /// <param name="ProductImages">Danh sách ảnh của sản phẩm.</param>
         /// <returns>Kết quả xóa sản phẩm.</returns>
         [HttpDelete]
         [Route(ProductRoute.DeleteProduct)]
         [Authorize(Roles = UserConstant.USER_ROLE_STAFF)]
-        public async Task<ActionResult> DeleteProduct(int id, List<IFormFile> ProductImages)
+        public async Task<ActionResult> DeleteProduct(int id)
         {
             var result = await _productService.DeleteProductAsync(id);
             return result.Match(

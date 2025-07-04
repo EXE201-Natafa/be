@@ -52,7 +52,7 @@ namespace Natafa.Api.Services.Implements
                 await _uow.CommitAsync();
 
                 await _uow.CommitTransactionAsync();
-                return new MethodResult<string>.Success("Order created successfully");
+                return new MethodResult<string>.Success(order.OrderId.ToString());
             }
             catch (Exception e)
             {

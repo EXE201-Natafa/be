@@ -69,5 +69,28 @@ namespace Natafa.Api.Controllers
                 Ok
             );
         }
+
+        /// <summary>
+        /// Xóa sản phẩm khỏi danh sách yêu thích của người dùng.
+        /// </summary>
+        /// <param name="id">ID sản phẩm cần xóa.</param>
+        /// <returns>Kết quả xóa sản phẩm vào danh sách yêu thích.</returns>
+        [HttpDelete]
+        [Route(WishListRoute.DeleteFromWishList)]
+        [Authorize(Roles = UserConstant.USER_ROLE_CUSTOMER)]
+        public async Task<ActionResult> DeleteFromWishList(int id)
+        {
+            // Lấy ID người dùng từ Claims.
+            var userId = Int32.Parse(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Sid).Value);
+
+            // Gọi dịch vụ để thêm sản phẩm vào danh sách yêu thích.
+            var result = await _wishListService.DeleteFromWishListAsync(userId, id);
+
+            // Xử lý kết quả trả về.
+            return result.Match(
+                (l, c) => Problem(detail: l, statusCode: c),
+                Ok
+            );
+        }
     }
 }

@@ -98,5 +98,19 @@ namespace Natafa.Api.Services.Implements
             await _uow.CommitAsync();
             return new MethodResult<string>.Success("Product added to wishlist successfully");
         }
+
+        public async Task<MethodResult<string>> DeleteFromWishListAsync(int userId, int productId)
+        {
+            var wishList = await _uow.GetRepository<Wishlist>().SingleOrDefaultAsync(
+                predicate: p => p.ProductId == productId && p.UserId == userId
+            );
+            if (wishList == null)
+            {
+                return new MethodResult<string>.Failure("Product not found in wishlist", StatusCodes.Status404NotFound);
+            }
+            _uow.GetRepository<Wishlist>().DeleteAsync(wishList);
+            await _uow.CommitAsync();
+            return new MethodResult<string>.Success("Delete product from wishlist successfully");
+        }
     }
 }

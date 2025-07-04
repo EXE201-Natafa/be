@@ -9,5 +9,6 @@ namespace Natafa.Api.Services.Interfaces
     {
         Task<MethodResult<IPaginate<ProductResponse>>> GetWishListAsync(int userId, PaginateRequest request);
         Task<MethodResult<string>> AddToWishListAsync(int userId, int productId);
+        Task<MethodResult<string>> DeleteFromWishListAsync(int userId, int productId);
     }
 }

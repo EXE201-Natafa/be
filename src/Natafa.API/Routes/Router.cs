@@ -133,6 +133,7 @@ namespace Natafa.Api.Routes
             public const string WishList = $"{prefix}wish-list";
             public const string GetWishList = $"{WishList}";
             public const string AddToWishList = $"{WishList}/{Id}";
+            public const string DeleteFromWishList = $"{WishList}/{Id}";
         }
 
         public static class ShippingAddressRoute
