@@ -11,7 +11,9 @@ namespace Natafa.Api.Mapper
         public OrderProfile()
         {
             CreateMap<OrderCreateRequest, Order>()
-                .ForMember(dest => dest.TotalAmount, opt => opt.MapFrom(src => 0));
+                .ForMember(dest => dest.TotalAmount, opt => opt.MapFrom(src => 0))
+                .ForMember(dest => dest.OrderDetails, opt => opt.MapFrom(src => src.OrderDetailRequests));
+            CreateMap<OrderDetailCreateRequest, OrderDetail>();
 
             CreateMap<Order, OrderResponse>()
                 .ForMember(dest => dest.Transaction, opt => opt.MapFrom(src => src.Transactions.FirstOrDefault()));
