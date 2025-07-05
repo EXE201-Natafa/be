@@ -176,6 +176,7 @@ namespace Natafa.Api.Services.Implements
                     selector: s => _mapper.Map<OrderResponse>(s),
                     predicate: predicate,
                     include: i => i.Include(x => x.OrderDetails)
+                                        .ThenInclude(od => od.ProductDetail.Product.ProductImages)
                                    .Include(x => x.OrderTrackings)
                                    .Include(x => x.User)
                                    .Include(x => x.Transactions)
@@ -209,6 +210,7 @@ namespace Natafa.Api.Services.Implements
                     selector: s => _mapper.Map<OrderResponse>(s),
                     predicate: predicate,
                     include: i => i.Include(x => x.OrderDetails)
+                                        .ThenInclude(od => od.ProductDetail.Product.ProductImages)
                                    .Include(x => x.OrderTrackings)
                                    .Include(x => x.User)
                                    .Include(x => x.Transactions)

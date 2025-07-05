@@ -18,7 +18,9 @@ namespace Natafa.Api.Mapper
             CreateMap<Order, OrderResponse>()
                 .ForMember(dest => dest.Transaction, opt => opt.MapFrom(src => src.Transactions.FirstOrDefault()));
             CreateMap<OrderTracking, OrderTrackingResponse>();
-            CreateMap<OrderDetail, OrderDetailResponse>();
+            CreateMap<OrderDetail, OrderDetailResponse>()
+                .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.ProductDetail.Product.ProductName))
+                .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.ProductDetail.Product.ProductImages.FirstOrDefault().Url));
         }
     }
 }
