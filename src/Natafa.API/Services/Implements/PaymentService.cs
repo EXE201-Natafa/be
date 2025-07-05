@@ -87,7 +87,7 @@ namespace Natafa.Api.Services.Implements
             vnpay.AddRequestData("vnp_OrderType", "other"); //default value: other
             vnpay.AddRequestData("vnp_ReturnUrl", _config.ReturnUrl);
             vnpay.AddRequestData("vnp_TxnRef", tick); // Mã tham chiếu của giao dịch tại hệ thống của merchant.Mã này là duy nhất dùng để phân biệt các đơn hàng gửi sang VNPAY.Không được trùng lặp trong ngày    
-            vnpay.AddRequestData("vnp_ExpireDate", DateTime.Now.AddMinutes(15).ToString("yyyyMMddHHmmss"));
+            vnpay.AddRequestData("vnp_ExpireDate", DateTime.Now.AddHours(7).AddMinutes(15).ToString("yyyyMMddHHmmss"));
 
             var paymentUrl = vnpay.CreateRequestUrl(_config.BaseUrl, _config.HashSecret);
 
@@ -169,11 +169,11 @@ namespace Natafa.Api.Services.Implements
                     message = $"{transactionId}";
                 }
 
-                return $"payment-result?type={type}&message={message}";
+                return $"payment-result?result={type}&message={message}";
             }
             catch (Exception e)
             {
-                return $"payment-result?type=fail&message=Payment fail: {e}";
+                return $"payment-result?result=fail&message=Payment fail: {e}";
             }
         }
 
