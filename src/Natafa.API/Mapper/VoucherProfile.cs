@@ -8,9 +8,10 @@ namespace Natafa.Api.Mapper
     {
         public VoucherProfile()
         {
-            CreateMap<Voucher, VoucherResponse>();
+            CreateMap<Voucher, VoucherResponse>()
+                .ForMember(dest => dest.IsActive, opt => opt.MapFrom(src => src.Status)); ;
             CreateMap<VoucherRequest, Voucher>()
-                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => true));
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.IsActive));
         }
     }
 

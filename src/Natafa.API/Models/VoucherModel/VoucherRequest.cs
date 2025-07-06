@@ -11,6 +11,4 @@
         public int UsageLimit { get; set; }
         public bool IsActive { get; set; }
     }
-
-
 }
