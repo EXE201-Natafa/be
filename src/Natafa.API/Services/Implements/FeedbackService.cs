@@ -119,7 +119,8 @@ namespace Natafa.Api.Services.Implements
                 var feedbacks = await _uow.GetRepository<Feedback>().GetPagingListAsync(
                     selector: f => _mapper.Map<FeedbackResponse>(f),
                     predicate: predicate,
-                    include: f => f.Include(x => x.FeedbackImages),
+                    include: f => f.Include(x => x.FeedbackImages)
+                                   .Include(x => x.User),
                     orderBy: BuildOrderBy(request.sortBy),
                     page: page,
                     size: size
@@ -153,7 +154,8 @@ namespace Natafa.Api.Services.Implements
                 var feedbacks = await _uow.GetRepository<Feedback>().GetPagingListAsync(
                     selector: f => _mapper.Map<FeedbackResponse>(f),
                     predicate: predicate,
-                    include: f => f.Include(x => x.FeedbackImages),
+                    include: f => f.Include(x => x.FeedbackImages)
+                                   .Include(x => x.User),
                     orderBy: BuildOrderBy(request.sortBy),
                     page: page,
                     size: size

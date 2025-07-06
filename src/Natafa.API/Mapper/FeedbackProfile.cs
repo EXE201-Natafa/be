@@ -12,6 +12,8 @@
             CreateMap<Feedback, FeedbackResponse>()
                 .ForMember(dest => dest.Images, opt => opt.MapFrom(src => src.FeedbackImages.Select(f => f.Url)));          
             CreateMap<FeedbackRequest, Feedback>();
+            CreateMap<User, UserFeedback>();
+
         }
     }
 

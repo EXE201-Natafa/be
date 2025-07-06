@@ -10,7 +10,8 @@ namespace Natafa.Api.Services.Interfaces
     public interface IUserService
     {
         Task<MethodResult<User>> GetByEmailAsync(string email);
-        Task<MethodResult<ProfileResponse>> GetProfileAsync(string email);
+        Task<MethodResult<ProfileResponse>> GetMyProfileAsync(string email);
+        Task<MethodResult<ProfileResponse>> GetProfileByUserIdAsync(int userId);
         Task<MethodResult<string>> UpdateProfileAsync(string email, UpdateProfileRequest request);
         Task<MethodResult<string>> CreateUserAsync(UserRequest request);
         Task<MethodResult<string>> UpdateUserAsync(int id, UserRequest request);

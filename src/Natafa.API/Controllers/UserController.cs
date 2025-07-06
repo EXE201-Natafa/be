@@ -24,17 +24,35 @@ namespace Natafa.Api.Controllers
         }
 
         /// <summary>
-        /// Lấy thông tin hồ sơ người dùng.
+        /// Trả về thông tin hồ sơ của người dùng hiện đang đăng nhập.
         /// </summary>
-        /// <returns>Thông tin hồ sơ người dùng.</returns>
+        /// <returns>Thông tin hồ sơ của người dùng.</returns>
         [HttpGet]
-        [Route(UserRoute.GetUpdateDeleteProfile)]
-        public async Task<IActionResult> GetProfile()
+        [Route(UserRoute.GetMyProfile)]
+        [Authorize]
+        public async Task<IActionResult> GetMyProfile()
         {
             var email = User.FindFirst(ClaimTypes.Email)?.Value;
             if (email == null) return Unauthorized();
 
-            var result = await _userService.GetProfileAsync(email);
+            var result = await _userService.GetMyProfileAsync(email);
+            return result.Match(
+                (l, c) => Problem(detail: l, statusCode: c),
+                Ok
+            );
+        }
+
+        /// <summary>
+        /// Trả về thông tin hồ sơ của người dùng theo ID (chỉ dành cho Admin và Staff).
+        /// </summary>
+        /// <param name="userId">ID của người dùng.</param>
+        /// <returns>Thông tin hồ sơ của người dùng.</returns>
+        [HttpGet]
+        [Route(UserRoute.GetProfileByUserId)]
+        [Authorize(Roles = UserConstant.USER_ROLE_ADMIN + "," + UserConstant.USER_ROLE_STAFF)]
+        public async Task<IActionResult> GetProfileByUserId(int userId)
+        {
+            var result = await _userService.GetProfileByUserIdAsync(userId);
             return result.Match(
                 (l, c) => Problem(detail: l, statusCode: c),
                 Ok
@@ -97,13 +115,13 @@ namespace Natafa.Api.Controllers
         }
 
         /// <summary>
-        /// Tạo mới một người dùng (dành cho Admin và Staff).
+        /// Tạo mới một người dùng (chỉ dành cho Admin).
         /// </summary>
         /// <param name="request">Thông tin người dùng.</param>
         /// <returns>Kết quả tạo mới.</returns>
         [HttpPost]
         [Route(UserRoute.CreateUser)]
-        [Authorize(Roles = UserConstant.USER_ROLE_ADMIN + "," + UserConstant.USER_ROLE_STAFF)]
+        [Authorize(Roles = UserConstant.USER_ROLE_ADMIN)]
         public async Task<IActionResult> CreateUser([FromBody] UserRequest request)
         {
             var result = await _userService.CreateUserAsync(request);
@@ -114,14 +132,14 @@ namespace Natafa.Api.Controllers
         }
 
         /// <summary>
-        /// Cập nhật thông tin người dùng (dành cho Admin và Staff).
+        /// Cập nhật thông tin người dùng (chỉ dành cho Admin).
         /// </summary>
         /// <param name="id">ID của người dùng.</param>
         /// <param name="request">Thông tin cần cập nhật.</param>
         /// <returns>Kết quả cập nhật.</returns>
         [HttpPut]
         [Route(UserRoute.GetUpdateDelete)]
-        [Authorize(Roles = UserConstant.USER_ROLE_ADMIN + "," + UserConstant.USER_ROLE_STAFF)]
+        [Authorize(Roles = UserConstant.USER_ROLE_ADMIN)]
         public async Task<IActionResult> UpdateUser(int id, [FromBody] UserRequest request)
         {
             var result = await _userService.UpdateUserAsync(id, request);

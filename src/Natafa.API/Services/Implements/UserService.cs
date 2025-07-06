@@ -40,10 +40,20 @@ namespace Natafa.Api.Services.Implements
             return new MethodResult<User>.Success(user);
         }
 
-        public async Task<MethodResult<ProfileResponse>> GetProfileAsync(string email)
+        public async Task<MethodResult<ProfileResponse>> GetMyProfileAsync(string email)
         {
             var user = await _uow.GetRepository<User>().SingleOrDefaultAsync(
                     predicate: p => p.Email == email
+                );
+
+            var result = _mapper.Map<ProfileResponse>(user);
+            return new MethodResult<ProfileResponse>.Success(result);
+        }
+
+        public async Task<MethodResult<ProfileResponse>> GetProfileByUserIdAsync(int userId)
+        {
+            var user = await _uow.GetRepository<User>().SingleOrDefaultAsync(
+                    predicate: p => p.UserId == userId
                 );
 
             var result = _mapper.Map<ProfileResponse>(user);
