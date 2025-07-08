@@ -124,19 +124,17 @@ namespace Natafa.Api.Services.Implements
                     }
                 }
 
-                if (request.IsImageUpdate)
-                {
-                    if (request.Image != null)
+                _mapper.Map(request, category);
+
+                if (request.IsImageUpdate && request.Image != null)
+                {                  
+                    var imageUrl = await _cloudinaryService.UploadImageAsync(request.Image);
+                    if (imageUrl != null)
                     {
-                        var imageUrl = await _cloudinaryService.UploadImageAsync(request.Image);
-                        if (imageUrl != null)
-                        {
-                            category.Image = imageUrl;
-                        }
+                        category.Image = imageUrl;
                     }
                 }
-
-                _mapper.Map(request, category);                
+           
                 _uow.GetRepository<Category>().UpdateAsync(category);
 
                 await _uow.CommitAsync();
