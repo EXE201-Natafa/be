@@ -1,4 +1,4 @@
-﻿using Natafa.Api.Services.Implements;
+using Natafa.Api.Services.Implements;
 using Natafa.Api.Services.Interfaces;
 using Natafa.Domain.Entities;
 using Natafa.Repository.Implement;
@@ -37,6 +37,7 @@ namespace Natafa.Api.Extensions
             service.AddTransient<IFeedbackService, FeedbackService>();
             service.AddTransient<IWishListService, WishListService>();
             service.AddTransient<IShippingAddressService, ShippingAddressService>();
+            service.AddTransient<ICartService, CartService>();
 
             return service;
         }

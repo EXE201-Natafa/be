@@ -492,4 +492,17 @@ INSERT INTO `transaction` (amount, description, order_id) VALUES
 (828300.00, 'Payment for Stormtrooper 15cm and Mecha Warrior 25cm', 2),
 (1068350.00, 'Payment for Fantasy Dragon 20cm and 25cm', 3);
 
+-- Cart table for shopping cart functionality
+CREATE TABLE cart (
+    cart_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    product_detail_id INT NOT NULL,
+    quantity INT NOT NULL DEFAULT 1,
+    created_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES `user`(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (product_detail_id) REFERENCES product_detail(product_detail_id) ON DELETE CASCADE,
+    UNIQUE KEY unique_user_product_detail (user_id, product_detail_id)
+);
+
 
