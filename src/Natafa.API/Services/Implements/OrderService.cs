@@ -38,6 +38,7 @@ namespace Natafa.Api.Services.Implements
             {
                 var order = _mapper.Map<Order>(request);
                 order.UserId = userId;
+                order.CreateDate = DateTime.Now;
 
                 await HandleOrderDetailAsync(order);
                 await HandleShippingPriceAsync(request.InRegion, request.OrderDetailRequests, order);
@@ -180,6 +181,7 @@ namespace Natafa.Api.Services.Implements
                                    .Include(x => x.OrderTrackings)
                                    .Include(x => x.User)
                                    .Include(x => x.Transactions)
+                                   .Include(x => x.PaymentMethod)
                                    .Include(x => x.Voucher),
                     orderBy: BuildOrderBy(request.sortBy),
                     page: page,
@@ -214,6 +216,7 @@ namespace Natafa.Api.Services.Implements
                                    .Include(x => x.OrderTrackings)
                                    .Include(x => x.User)
                                    .Include(x => x.Transactions)
+                                   .Include(x => x.PaymentMethod)
                                    .Include(x => x.Voucher),
                     orderBy: BuildOrderBy(request.sortBy),
                     page: page,

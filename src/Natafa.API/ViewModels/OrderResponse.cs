@@ -19,6 +19,10 @@ namespace Natafa.Api.ViewModels
 
         public decimal TotalAmount { get; set; }
 
+        public DateTime CreateDate { get; set; }
+
+        public PaymentMethodResponse PaymentMethod { get; set; } = null!;
+
         public VoucherResponse? Voucher { get; set; }
 
         public List<OrderDetailResponse> OrderDetails { get; set; } = null!;
